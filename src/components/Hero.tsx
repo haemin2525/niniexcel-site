@@ -16,27 +16,25 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
           {/* Left column — eyebrow + headline */}
-          <div className="lg:col-span-7">
-            <p className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-6">
+          <div className="lg:col-span-7 min-w-0 max-w-2xl">
+            <p className="text-xs uppercase tracking-[0.22em] text-ink-500 mb-6">
               {profile.title}
             </p>
-            <h1 className="font-black tracking-tight leading-[0.95] text-slate-900">
-              <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl">
+            <h1 className="font-display font-black tracking-tight leading-[0.95] text-ink-900 text-balance">
+              <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl hero-fade-up">
                 {editorialHeadline.line1}
               </span>
-              <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl italic text-amber-500 mt-2">
+              <span className="block font-editorial italic text-amber-500 mt-2 text-5xl sm:text-6xl lg:text-7xl xl:text-8xl hero-fade-up-delay">
                 {editorialHeadline.line2Lead}
               </span>
             </h1>
 
-            {/* Trust bar — inside hero, below headline */}
-            <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2">
+            {/* Trust bar — single quiet line of names */}
+            <div className="mt-10 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink-500">
               {trustBar.map((name, i) => (
-                <span key={name} className="flex items-center gap-3">
-                  {i !== 0 && (
-                    <span aria-hidden="true" className="w-1 h-1 rounded-full bg-slate-300" />
-                  )}
-                  <span className="text-sm text-slate-500">{name}</span>
+                <span key={name} className="flex items-center gap-2">
+                  {i !== 0 && <span aria-hidden="true">·</span>}
+                  <span>{name}</span>
                 </span>
               ))}
             </div>
@@ -45,31 +43,23 @@ export default function Hero() {
           {/* Right column — contact card */}
           <div
             id="contact"
-            className="lg:col-span-5"
+            className="lg:col-span-5 min-w-0"
           >
-            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-8">
-              <p className="text-xs uppercase tracking-[0.18em] text-slate-400 mb-4">
-                강의 의뢰
-              </p>
-              <p className="text-sm text-slate-600 mb-4 leading-relaxed">
-                강의 의뢰는 메일로 보내주세요
+            <div className="rounded-2xl border border-ink-200 bg-white shadow-sm p-8 max-w-sm">
+              <p className="text-xs uppercase tracking-[0.22em] text-ink-400 mb-4">
+                연락 주세요
               </p>
               <a
                 href={`mailto:${email}?subject=${subject}`}
-                className="block text-base sm:text-lg font-semibold text-slate-900 break-all hover:text-amber-500 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 rounded-sm"
+                className="group inline-flex items-baseline gap-2 text-base sm:text-lg font-semibold text-ink-900 break-all hover:text-amber-600 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 rounded-sm"
                 aria-label={`이메일 보내기 — ${email}`}
               >
-                {email}
+                <span className="border-b border-transparent group-hover:border-amber-500 transition">{email}</span>
+                <span aria-hidden="true" className="text-amber-500 transition group-hover:translate-x-0.5">→</span>
               </a>
-              <p className="mt-3 text-sm text-slate-500">
-                평일 24시간 안에 회신드립니다
+              <p className="mt-3 text-sm text-ink-500 leading-relaxed">
+                평일 안에 회신드립니다
               </p>
-              <a
-                href={`mailto:${email}?subject=${subject}`}
-                className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-amber-500 text-white text-sm font-semibold hover:bg-amber-600 active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 transition"
-              >
-                메일 쓰기 &rarr;
-              </a>
             </div>
           </div>
 
