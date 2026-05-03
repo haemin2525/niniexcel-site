@@ -7,6 +7,10 @@ export type Profile = {
   hero: {
     headline: string;
     subheadline: string;
+    editorialHeadline: {
+      line1: string;
+      line2Lead: string;
+    };
     trustBar: string[];
     primaryCta: Cta;
     secondaryCta: Cta;

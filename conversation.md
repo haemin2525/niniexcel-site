@@ -1,24 +1,22 @@
 # Conversation Log — ProfileWebsite
 
-## 🎯 목적 (Purpose)
+## 목적 (Purpose)
 강사/디지털 플래너 크리에이터/유튜버인 **장혜민**님의 프로필 사이트 제작.
 - 핵심 목표: 강의 의뢰자가 사이트만 보고 "이 사람에게 연락하면 되겠다" 확신을 갖게 만들기
 - 남편(상래)이 1차 빌드, 이후 혜민님이 직접 운영·확장
 - 와이프 클로드 코드 학습 자료로도 활용
 
-## 📌 요약 (Summary)
-- 스택: **React + Tailwind**, GitHub Pages 배포
-- 설계 도구: Google Stitch와 병행
-- 1차 출시 형태: **C. 하이브리드** (메인은 원페이지 + 강의 상세/플래너 모음 별도 라우트) ✅
-- 메인 섹션 7개: **Hero → About → 강의 영역 → 강의 이력 → 유튜브 → 디지털 플래너 → Contact** ✅
-- 자료 확보: **A. 별도 폴더** (`프로필/haemin/`) ✅
-- 핵심 자료(PDF) 추출 완료 → 6년+ 출강(현대차/한샘/광주은행/OK저축은행/하남시청/군포시청), 인프런·패스트캠퍼스 정규강의, 모두싸인 데이터분석가 출신, 마켓컬리·29CM·팀블라인드 MD 경력, SQLD/ADsP, 『클로드엑셀』 집필 중
-- 진행 단계: 브레인스토밍 (Q1, Q2, Q3 완료)
+## 요약 (Summary)
+- 스택: React + TypeScript + Vite + Tailwind v3 + HashRouter, GitHub Pages 배포
+- 1차 출시 형태: 하이브리드 (메인 원페이지 + `/talks` `/products` 별도 라우트)
+- 메인 섹션 7개: Hero → About → Topics → Talks → YouTube → Products → Contact
+- Live URL: https://haemin2525.github.io/biz/ (repo: haemin2525/biz)
+- HARD 제약: 기본 이모지 사용 금지 (응답 + 코드 + 자산 모두) — 이번 세션에서 강제 적용
+- 1차 빌드 완료(24 commits) 후 OMD 시스템(11 agents · 4 stage · 3 checkpoint)으로 refinement 패스 1회 완료
 
-## ⏭ 다음 액션 (Next)
-- ▶️ **실행 시작** — 모드: **1번 Subagent-Driven** + 진척 가시화: **A. conversation.md** (이미 동작 중)
-- 첫 작업: Phase 1 Task 1 (ProfileWebsite git init)
-- Phase 6 도착 시 혜민님 GitHub 계정 정보 필요 (배포 URL 결정용)
+## 다음 액션 (Next)
+- 본인 결정 필요 1건: Contact 카피 "평일 24시간 안에 회신드립니다" 유지/완화 결정
+- 2차 라운드 후보: 프로필 사진, og:image / favicon, 강의 후기(Testimonial)
 
 ---
 
@@ -70,6 +68,29 @@
 - 환경 점검 결과: `multica 0.2.15` **이미 설치되어 있음** (`/opt/homebrew/bin/multica`). 인증도 완료(`SR N <nsr7025@gmail.com>`, 워크스페이스: `kimchicandy`). Daemon만 stopped 상태.
 - `multica daemon start` 실행 → 정상 기동 (pid 75484, 7개 런타임 모두 online: claude/codex/openclaw/hermes/gemini/pi/cursor).
 - ProfileWebsite 본 흐름과는 별개의 1회성 작업. 다음 턴부터 Q3(혜민님 콘텐츠 자료 확보 방식)로 복귀 예정.
+
+### 2026-05-03 23:09 — 턴 13 (OMD refinement 패스)
+
+**사용자:** OMD(oh-my-design MCP)의 11 agent + 4 stage(Plan→System→Make→Validate) + 3 checkpoint(Discovery/Components/Handoff)로 라이브 사이트 다시 다듬기. 절대 기본 이모지 사용 금지. 끝나면 commit·push·배포.
+
+**어시스턴트:**
+- omd-master agent에 fast-track 모드(자율 진행, 막힐 때만 질의)로 dispatch — 컨텍스트(라이브 URL, 페르소나, 자료 위치, 현재 코드, HARD 제약) 인라인 전달.
+- 산출물 3개: `.omd/OMD-PLAN.md` `.omd/DESIGN.md` `.omd/HANDOFF.md`.
+- 변경 1 squash commit `a7754ee refine(landing): replace emoji icons with SVG glyphs, add amber accent + a11y pass`. 이후 자산 base path 픽스 1건 추가 → `4666974 fix(assets): prefix BASE_URL on icon/thumbnail src so GH Pages /biz/ subpath resolves`.
+- 핵심 변경:
+  1. `src/content/topics.json` 이모지 6종(📊🤖📈🗄️📐⚙️) → `/icons/topics/<id>.svg` 6개 SVG 글리프로 교체. (build-time inline은 아니고 public/ 자산 + base prefix.)
+  2. `tailwind.config.js`에 `accent`(amber-500/50), `brand-50`, `dot-grid` 토큰 추가 — Indigo 위계 보호하며 차별화 lever 1개만.
+  3. Hero "부딪힌 만큼만"에 amber underline-stroke + dot-grid bg motif + 트러스트 바 좌측 amber dot.
+  4. About strengths 카드 좌측 amber stroke 4px, certifications chip은 brand-50 시맨틱 토큰으로.
+  5. 모든 인터랙티브 요소(15곳)에 `focus-visible:ring-2 ring-brand ring-offset-2`.
+  6. Home/Talks/Products `<main>` 랜드마크 추가, Header `<nav aria-label="주 메뉴">`, 외부 링크 `(새 창)` aria-label.
+  7. Microcopy 정제: Hero subhead "강사" 명시, Contact "평일 24시간 안에 회신드립니다", YouTube "실제 강의 톤을 영상으로 미리 보세요".
+- a11y: brand on white 8.59:1 (AAA), amber는 장식용으로만 (4px stroke, 1.5px dot, 텍스트 배색 X). blocker 0.
+- persona-tester P1(L&D 매니저)·P3(강의 PD) 둘 다 friction 0, 약 40~58s 안에 mailto 클릭. critic verdict: SHIP.
+- 새 deps 0 (HARD 제약 100% 준수). 빌드 759ms, 번들 변동 negligible.
+- 1차 deploy 후 라이브에서 토픽 아이콘 6 + 플래너 썸네일 2 모두 broken-image (콘솔 에러 8). 원인: GH Pages가 `/biz/` 서브패스에서 서빙되는데 JSON에 절대경로(`/icons/...`)가 박혀 있어 서브패스 prefix 누락. 컴포넌트에서 `import.meta.env.BASE_URL` prefix 헬퍼 1개로 처리(Topics, ProductCards) + `src/vite-env.d.ts` 추가(TS가 import.meta.env 인식하도록).
+- 2차 deploy 후 라이브 검증: HTTP 200, `https://haemin2525.github.io/biz/icons/topics/excel.svg` 200, `/biz/products/tumblbug.svg` 200, 콘솔 에러 0. 시각 렌더링 정상.
+- 본인 검증 필요 1건 — Contact 카피 "평일 24시간 안에 회신드립니다" (이행 가능한지 본인 결정).
 
 ### 2026-05-03 17:43 — 턴 5 (Q3 답변 + PDF 제공)
 

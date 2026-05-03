@@ -1,10 +1,14 @@
 {
-  "name": "장혜민",
-  "nameEn": "Hyemin Jang",
+  "name": "니니의엑셀",
+  "nameEn": "Niniexcel",
   "title": "엑셀 · 데이터 · AI 실무 강사",
   "hero": {
     "headline": "현업에서 부딪힌 만큼만, 비전공자도 쓸 수 있게 가르칩니다.",
     "subheadline": "마켓컬리·모두싸인 출신 데이터 분석가 · 6년 이상 대기업·공공기관 출강 · Excel · SQL · Claude로 일하는 강사",
+    "editorialHeadline": {
+      "line1": "현업에서 부딪힌 만큼,",
+      "line2Lead": "비전공자도 쓸 수 있게."
+    },
     "trustBar": ["현대자동차", "한샘", "광주은행", "OK저축은행", "하남시청", "인프런", "패스트캠퍼스"],
     "primaryCta": { "label": "강의 문의하기", "href": "#contact" },
     "secondaryCta": { "label": "강의 보러 가기", "href": "#/talks" }
@@ -32,7 +36,6 @@
   "contact": {
     "email": "haemin2525@gmail.com",
     "altEmail": "haemin2525@naver.com",
-    "phone": "010-4411-1025",
     "sns": [
       { "label": "YouTube 니니의엑셀", "url": "https://www.youtube.com/@niniexcel" },
       { "label": "텀블벅", "url": "https://tumblbug.com/u/ewwfkjmcajgzmryk" },

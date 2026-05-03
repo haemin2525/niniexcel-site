@@ -1,8 +1,8 @@
 import profile from "../content/profile.json";
 
 export default function Contact() {
-  const { email, altEmail, phone, sns } = profile.contact;
-  const subject = encodeURIComponent("[강의 문의] " + profile.name + "님");
+  const { email, altEmail, sns } = profile.contact;
+  const subject = encodeURIComponent("[강의 문의] 니니의엑셀");
   return (
     <section id="contact" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">강의 문의</h2>
@@ -22,7 +22,6 @@ export default function Contact() {
         <div className="rounded-xl border border-slate-200 p-6 bg-white">
           <p className="text-sm uppercase tracking-[0.18em] text-slate-500">다른 채널</p>
           {altEmail && <p className="mt-2 text-slate-700">대체 이메일 · {altEmail}</p>}
-          {phone && <p className="mt-1 text-slate-700">연락처 · {phone}</p>}
           {sns && (
             <div className="mt-4 flex flex-wrap gap-2">
               {sns.map((s) => (

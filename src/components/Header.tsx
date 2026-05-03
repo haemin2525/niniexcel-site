@@ -9,8 +9,7 @@ export default function Header() {
           to="/"
           className="font-bold text-lg rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
         >
-          {profile.name}{" "}
-          <span className="text-slate-400 font-medium text-sm">{profile.nameEn}</span>
+          {profile.name}
         </Link>
         <nav aria-label="주 메뉴" className="flex gap-6 text-sm text-slate-600">
           <Link
