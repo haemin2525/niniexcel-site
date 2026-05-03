@@ -1,0 +1,16 @@
+[
+  {
+    "id": "tumblbug",
+    "name": "텀블벅 디지털 플래너",
+    "description": "니니의엑셀 디지털 플래너 펀딩",
+    "url": "https://tumblbug.com/u/ewwfkjmcajgzmryk",
+    "thumbnail": "/products/tumblbug.svg"
+  },
+  {
+    "id": "smartstore-mondaykeeper",
+    "name": "스마트스토어 mondaykeeper",
+    "description": "디지털 플래너 상시 판매 채널",
+    "url": "https://smartstore.naver.com/mondaykeeper",
+    "thumbnail": "/products/smartstore.svg"
+  }
+]
