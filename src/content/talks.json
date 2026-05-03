@@ -1,0 +1,11 @@
+[
+  { "year": "현재", "client": "패스트캠퍼스", "topic": "클로드인엑셀", "type": "정규 강의", "url": "https://fastcampus.co.kr/" },
+  { "year": "현재", "client": "인프런", "topic": "데이터 시각화", "type": "정규 강의", "url": "https://www.inflearn.com/" },
+  { "year": "최근", "client": "현대자동차", "topic": "엑셀 / 데이터 실무", "type": "기업 출강" },
+  { "year": "최근", "client": "한샘", "topic": "엑셀 / 데이터 실무", "type": "기업 출강" },
+  { "year": "최근", "client": "광주은행", "topic": "엑셀 / 데이터 실무", "type": "기업 출강" },
+  { "year": "최근", "client": "OK저축은행", "topic": "엑셀 / 데이터 실무", "type": "기업 출강" },
+  { "year": "최근", "client": "하남시청", "topic": "엑셀 / 데이터 실무", "type": "공공기관 강의" },
+  { "year": "최근", "client": "군포시청", "topic": "엑셀 / 데이터 실무", "type": "공공기관 강의" },
+  { "year": "상시", "client": "탈잉 / 크몽 / 프립", "topic": "엑셀 · 데이터 튜터링", "type": "플랫폼 튜터" }
+]
