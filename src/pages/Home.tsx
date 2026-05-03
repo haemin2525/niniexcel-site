@@ -1,19 +1,22 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Background from "../components/Background";
+import Frame from "../components/Frame";
 import Hero from "../components/Hero";
-import TalkList from "../components/TalkList";
-import Topics from "../components/Topics";
+import PhraseLine from "../components/PhraseLine";
+import ProcessGrid from "../components/ProcessGrid";
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <main>
+      <Background />
+      <Frame>
         <Hero />
-        <TalkList compact={false} />
-        <Topics />
-      </main>
-      <Footer />
+        <ProcessGrid />
+        <footer className="py-12 mt-32 sm:mt-40 border-t border-hairline">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-muted font-medium">
+            <PhraseLine>© 2026 NINIEXCEL · 니니의엑셀</PhraseLine>
+          </p>
+        </footer>
+      </Frame>
     </>
   );
 }

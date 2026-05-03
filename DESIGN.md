@@ -1,84 +1,95 @@
-# DESIGN.md — 니니의엑셀 디자인 시스템
+# Design Contract — Warm Dark, Airy, Operational
 
-본 문서는 사이트의 디자인 토큰과 크래프트 룰을 기록한다.
-impeccable 원칙을 기반으로 하되, 한국어 비즈니스 톤에 맞춰 차분하게 운영한다.
+> v2 (zero-base rebuild). Replaces all prior indigo/amber/ink/paper systems entirely.
 
-## Type scale
+## Palette
 
-### Families
-- `font-sans` / `font-display` — **Manrope** (400/500/600/700/800), Pretendard fallback (KR), system-ui.
-- `font-editorial` — **Instrument Serif Italic** (히어로의 강조 한 줄에만 사용).
-- Inter는 사용하지 않는다.
-
-### Sizes (Tailwind tokens)
-| Role | Class | Notes |
-|------|-------|-------|
-| Eyebrow | `text-xs uppercase tracking-[0.22em]` | Caps + open tracking |
-| Body | `text-base leading-relaxed` | 16px, 1.625 |
-| Body small | `text-sm leading-relaxed` | 14px |
-| Subhead | `text-lg font-semibold` | 18px |
-| Section H2 | `text-2xl sm:text-3xl font-bold` | 24–30px |
-| Page H1 | `text-3xl sm:text-4xl font-bold` | Talks/Products |
-| Hero H1 | `text-5xl … xl:text-8xl font-black tracking-tight leading-[0.95]` | Massive, balance, ink-900 |
-
-### Hierarchy rules
-- H1 / H2 모두 `text-balance` 적용.
-- Body 단락은 `max-w-prose` 또는 `max-w-2xl` 로 측정값(45–75ch) 유지.
-- 한 페이지에서 동일 역할의 텍스트는 동일 토큰을 쓴다.
-
-## Color tokens
-
-브랜드 코어는 indigo + amber. 중립은 **순흑/순회색을 피하고 cool ink로 살짝 틴팅** 한다.
+Warm dark canvas. Never pure black, never pure white. Single accent.
 
 | Token | Hex | Use |
-|-------|-----|-----|
-| `brand` | `#4F46E5` | Primary action, link, hover border |
-| `brand-50` | `#EEF2FF` | Soft surface, hover ring |
-| `accent` | `#F59E0B` | Hero italic line, signature warmth |
-| `accent-50` | `#FEF3C7` | (reserved) |
-| `paper` | `#FAFAFB` | Sectional off-white surface |
-| `ink-50` | `#F7F8FA` | Lightest surface |
-| `ink-100` | `#EEF0F3` | Hairline divider, tag bg |
-| `ink-200` | `#DCDFE4` | Card border, control border |
-| `ink-300` | `#B9BFC9` | Disabled |
-| `ink-400` | `#8B93A1` | De-emphasized meta |
-| `ink-500` | `#5A6373` | Secondary text, captions |
-| `ink-600` | `#3F4757` | Body text |
-| `ink-700` | `#2C3340` | Strong body, label |
-| `ink-800` | `#1F2531` | Default body (`<body>`) |
-| `ink-900` | `#141926` | Headings, primary content |
-| `ink-950` | `#0B0F1A` | Reserved |
+|---|---|---|
+| canvas | #14110D | page base, warm near-black |
+| surface-1 | #1A1612 | frame fill |
+| surface-2 | #221C16 | panel surface |
+| surface-3 | #2C251D | panel hover |
+| hairline | #3A3127 | dividers, borders (very low contrast) |
+| muted | #7A6E5C | de-emphasized meta |
+| body | #C9BEA6 | body text on warm dark |
+| head | #F0E8D5 | headings (warm off-white) |
+| accent | #D4A063 | single accent — warm amber-bronze |
+| accent-soft | #5C4528 | accent ring/glow |
 
-`text-black`, `text-slate-900`, `#000`, `#fff` 사용 금지. Body bg만 순백(`bg-white`).
+## Typography
 
-## Spacing & rhythm
-- Container — `max-w-6xl mx-auto px-4 sm:px-6 lg:px-8`.
-- Section vertical — `py-20` (homepage), `pt-20 pb-2 + section py-20` (sub pages).
-- Grid gap — `gap-4` (cards), `gap-8`/`gap-12` (page sections).
-- Card padding — `p-5` (compact) / `p-6` (standard) / `p-8` (hero contact).
+Single sans family. No editorial italic, no serif accent.
 
-## Motion language
-- Tokens: `cubic-bezier(0.22, 1, 0.36, 1)` (ease-out-quint) for entrance, `cubic-bezier(0.16, 1, 0.3, 1)` (ease-out-expo) for snappier feedback.
-- Durations: 150–200ms (hover/focus), 600ms (Hero entrance, gated by `prefers-reduced-motion`).
-- Hero italic line — `hero-fade-up-delay` keyframe (translateY 8→0, opacity 0→1, 600ms, +120ms delay).
-- Card hover — `scale-[1.005]` + `ring-1 ring-brand-50` + border swap. **No Y-translate, no shadow lift, no bounce.**
+- Display/body: Space Grotesk 400/500/600/700 (Google Fonts, display=swap).
+- Korean: Pretendard Variable (jsdelivr).
+- Fallback: system-ui, sans-serif.
 
-## Anti-patterns honored
-- No Inter / Roboto / Open Sans / Arial.
-- No pure black or pure gray text.
-- No gray text on colored surfaces.
-- No card-in-card nesting.
-- No bounce/elastic easing.
-- No side-stripe borders (>1px).
-- No gradient text on body content.
-- No glassmorphism beyond the header backdrop-blur.
-- No emojis in user-visible UI strings.
-- No em-dashes in copy.
+| Role | Spec |
+|---|---|
+| Hero pill | 11px uppercase tracking-[0.20em] font-medium muted |
+| Hero H1 | clamp(40px, 7vw, 96px) font-semibold tracking-[-0.02em] leading-[1.05] head |
+| Hero subhead | clamp(16px, 1.6vw, 20px) body tracking-[-0.005em] leading-[1.4] |
+| Panel label | 11px uppercase tracking-[0.18em] muted |
+| Panel title | 18px font-medium head |
+| Panel body | 14px leading-[1.5] body |
+| Button | 14px font-medium tracking-[-0.005em] |
+
+## Spacing / Rhythm (시원함 정량)
+
+- Outer page padding: px-6 sm:px-10 lg:px-16
+- Frame max-width: max-w-[1200px] mx-auto
+- Hero vertical: py-32 sm:py-40 lg:py-48
+- Section gap: mt-32 sm:mt-40
+- Stack: space-y-6 (pill→H1) → space-y-3 (H1→subhead) → pt-12 (→ContactCard)
+
+## Background
+
+`body` painted radial wash:
+
+```
+radial-gradient(120% 80% at 50% -10%, #221C16 0%, #14110D 60%)
+```
+
+Ultra-slow drift 30s linear infinite (±2% position) gated by `prefers-reduced-motion`.
+
+## Motion
+
+- Mount: 600ms cubic-bezier(0.22, 1, 0.36, 1) opacity 0→1 + translateY 6→0.
+  - Stagger: pill 0ms → H1.1 120ms → H1.2 240ms → subhead 360ms → CTA 480ms → grid 640ms.
+- Masked text reveal: H1 phrase span clip-path inset(0 100% 0 0)→inset(0 0 0 0) 700ms.
+- Hover: transition-colors duration-200 only. NO translate/scale/shadow lift.
+- All animations gated by `@media (prefers-reduced-motion: no-preference)`.
+- Bounce/elastic easing forbidden.
+
+## Single-line phrase enforcement
+
+Every phrase = a `<PhraseLine>` component. Mechanism (3 layers):
+
+1. Atomic phrase: `display: inline-block; white-space: nowrap; word-break: keep-all; overflow-wrap: normal;`
+2. Fluid type with floor: `font-size: clamp(min, vw, max)` calibrated so the longest expected phrase (≤14 KR chars) fits at 390px.
+3. Runtime overflow guard: ResizeObserver detects `scrollWidth > clientWidth`, sets `data-overflow="true"`, applies `font-size: 0.92em`.
+
+## Buttons
+
+- Default: rounded-[6px], border border-hairline, bg-surface-2 hover:bg-surface-3 text-head, px-5 py-2.5.
+- Primary: bg-accent text-canvas border-transparent hover:bg-accent/90.
+- No filled-color secondary. No gradient buttons.
+
+## Anti-patterns (forbidden)
+
+- Pure black (#000), pure white (#FFF), pure gray (any of the slate-* / zinc-* on warm-dark canvas).
+- Card-in-card: a card or rounded-* container nested inside another rounded-* container.
+- Heavy shadows, drop-shadow, saturated indigo/amber/violet/blue accents.
+- Bounce/elastic easing.
+- Common SaaS fonts (Inter, Arial, system defaults as primary — system-ui only as fallback).
 
 ## Accessibility floor
-- Body text ≥ 16px, headings scale up.
-- `focus-visible:ring-2` on every interactive element with `ring-offset-2`.
-- Touch targets ≥ 44px on mobile (verify via `py-2.5+`).
-- Contrast: `ink-900` on white ≈ 16:1; `ink-600` on white ≈ 8.6:1; `brand` on white ≈ 6.5:1 — all pass WCAG AA.
-- `prefers-reduced-motion` honored on the only animation.
-- All external links carry `aria-label` with "(새 창)" hint and `rel="noopener noreferrer"`.
+
+- focus-visible:ring-2 ring-accent ring-offset-2 ring-offset-canvas on every interactive element.
+- color contrast on warm-dark: head #F0E8D5 on canvas #14110D ≥ 14.0:1, body #C9BEA6 on canvas ≥ 9.0:1.
+- `<html lang="ko">` mandatory.
+- External links: `rel="noopener noreferrer"` + descriptive `aria-label`.
+- Keyboard reachable in DOM order, no positive tabindex.

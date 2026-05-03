@@ -15,8 +15,8 @@
 - 1차 빌드 완료(24 commits) 후 OMD 시스템(11 agents · 4 stage · 3 checkpoint)으로 refinement 패스 1회 완료
 
 ## 다음 액션 (Next)
-- 본인 결정 필요 1건: Contact 카피 "평일 24시간 안에 회신드립니다" 유지/완화 결정
-- 2차 라운드 후보: 프로필 사진, og:image / favicon, 강의 후기(Testimonial)
+- 본인 결정 후보: 프로필 사진 / og:image / favicon 자산 라운드, 강의 후기(Testimonial), 커스텀 도메인
+- ralph PRD 10 stories all PASS, architect APPROVE — no immediate work
 
 ---
 
@@ -90,7 +90,59 @@
 - 새 deps 0 (HARD 제약 100% 준수). 빌드 759ms, 번들 변동 negligible.
 - 1차 deploy 후 라이브에서 토픽 아이콘 6 + 플래너 썸네일 2 모두 broken-image (콘솔 에러 8). 원인: GH Pages가 `/biz/` 서브패스에서 서빙되는데 JSON에 절대경로(`/icons/...`)가 박혀 있어 서브패스 prefix 누락. 컴포넌트에서 `import.meta.env.BASE_URL` prefix 헬퍼 1개로 처리(Topics, ProductCards) + `src/vite-env.d.ts` 추가(TS가 import.meta.env 인식하도록).
 - 2차 deploy 후 라이브 검증: HTTP 200, `https://haemin2525.github.io/biz/icons/topics/excel.svg` 200, `/biz/products/tumblbug.svg` 200, 콘솔 에러 0. 시각 렌더링 정상.
-- 본인 검증 필요 1건 — Contact 카피 "평일 24시간 안에 회신드립니다" (이행 가능한지 본인 결정).
+- 본인 검증 필요 1건 — Contact 카피 "평일 24시간 안에 회신드립니다" (이행 가능한지 본인 결정). [참고: 턴 16에서 "평일 안에 회신드립니다"로 정정됨]
+
+### 2026-05-03 23:46 — 턴 14 (사이트 익명화 + 3섹션 재구성 + 에디토리얼 Hero, ralph PRD 첫 사이클)
+
+**사용자:** 1) 장혜민이라는 이름 모두 지우기 2) 페이지를 Hero(강사소개+컨택) + 강의 이력 + 가능 강의 3개 섹션으로 3) 심플/큼직/차별적, neuform.ai 사례 참고. 끝나면 commit·push·배포.
+
+**어시스턴트 (ralph 모드):**
+- `.omc/prd.json`에 5개 user story 작성(US-001~US-005), 각각 task-specific acceptance criteria.
+- neuform.ai SPA는 로그인 벽이지만 갤러리 썸네일(Urban Verge 등)에서 Editorial massive type + 단색 액센트 톤 파악.
+- executor 1회 dispatch로 5개 동시 처리:
+  - 모든 user-visible "장혜민/Hyemin Jang" 제거 → 브랜드 핸들 **니니의엑셀** (YouTube @niniexcel와 일치)으로 통일. profile.json/Header/Footer/Contact/index.html title/README 모두.
+  - 전화번호 필드 제거 (개인정보).
+  - Home.tsx 임포트 5개로 축소: Header, Footer, Hero, TalkList, Topics. About/YouTubeEmbed/ProductCards 미렌더(파일은 /products 라우트 위해 보존).
+  - Hero 전면 재작성: lg:text-7xl xl:text-8xl 거대 타입, italic amber 액센트("비전공자도 쓸 수 있게."), min-h-[88vh], 12-col grid 좌측 헤드라인 + 우측 컨택 카드, eyebrow tracking-[0.22em], trust bar 단일 middot 라인.
+  - profile.json hero에 editorialHeadline.{line1, line2Lead} 추가, types/content.ts 갱신.
+- 1 commit `399a751`. push 성공. GH Actions Deploy + pages-build-deployment 양쪽 success. 라이브 200, DOM 검증: hasRealName=false, headerBrand="니니의엑셀".
+- architect-medium APPROVE_WITH_NOTES (non-blocking: Footer mailto aria-label 누락은 후속).
+
+### 2026-05-03 23:58 — 턴 15 (impeccable 디자인 시스템 적용)
+
+**사용자:** pbakaus/impeccable 설치 + 23 visual command 적용. Anti-pattern: Inter 금지, 순수 검정/회색 금지, 카드 인 카드 금지, 바운스 이징 금지. 결정 자율, 다 하면 commit·push·배포.
+
+**어시스턴트:**
+- pbakaus/impeccable 클론 후 `.claude/skills/impeccable/` (SKILL.md + 35 reference markdown)을 프로젝트 로컬에 설치. 향후 `/impeccable` 명령 사용 가능.
+- PRD에 US-006~US-010 추가:
+  - US-006 skill install
+  - US-007 typeset (Inter 제거, Manrope 디스플레이/바디 + Instrument Serif italic 에디토리얼 액센트)
+  - US-008 colorize (tinted ink 스케일 50-950, paper #FAFAFB, 순수 black/slate-900 제거)
+  - US-009 distill/animate/onboard/harden/clarify/quieter/bolder/layout/adapt/optimize/overdrive 통합 패스
+  - US-010 PRODUCT.md/DESIGN.md 작성 + 빌드/배포 검증
+- executor 1회 dispatch (model=opus)로 8개 reference markdown 읽고 통합 적용:
+  - **Typeset**: index.css에서 Inter @import 제거, Manrope + Instrument Serif italic 추가, fontFamily에 sans/display/editorial 토큰. Hero italic line은 font-editorial.
+  - **Colorize**: tailwind.config.js에 ink 스케일(50:#F7F8FA → 950:#0B0F1A, heading=ink-900 #141926, body=ink-800 #1F2531) + paper #FAFAFB. 모든 컴포넌트 text-slate-900 → text-ink-900 마이그레이션.
+  - **Animate**: hero-fade-up keyframe 600ms cubic-bezier(0.22, 1, 0.36, 1), `@media (prefers-reduced-motion: no-preference)`로 게이팅. 바운스/엘라스틱 0.
+  - **Distill**: Hero 컨택 카드에서 amber 메일 쓰기 pill 제거, email 링크 자체가 primary affordance.
+  - **Onboard**: TalkList/Topics 빈 배열 상태 처리("강의 목록을 곧 정리해 둘게요.", "강의 영역을 준비 중입니다.").
+  - **Harden**: text-balance on h2/h3, min-w-0 + break-words on flex children, break-keep on h1.
+  - **Clarify**: Hero 컨택 카피 정제 — "연락 주세요" / email / "평일 안에 회신드립니다" (이전 "평일 24시간 안에 회신드립니다"는 "24시간"을 빼서 약속 부담 완화).
+  - **Quieter**: Trust bar 단일 middot 라인, "출강·강의" 레이블 제거.
+  - **Bolder**: h1 font-black 유지.
+  - **Optimize**: font-display=swap, preconnect to fonts.googleapis.com + fonts.gstatic.com.
+  - **Overdrive**: Instrument Serif italic 자체가 시그니처 (gradient text-clip 같은 화려한 효과는 impeccable의 ban 리스트라 의도적으로 회피).
+  - **Polish**: 모든 인터랙티브 요소 hover 패턴 통일 — ring-1 ring-brand-50 + scale-[1.005] (translate-Y/shadow-lift 제거). About 측면 stripe 제거(>1px 컬러 사이드 보더 ban).
+  - PRODUCT.md (34 lines), DESIGN.md (84 lines) 작성.
+- 1차 commit `7b78a38`. push.
+- 라이브 데스크톱 1440 검증 결과 h1 mid-syllable wrap 발견("현업에서 부 / 딪힌"). 원인: text-8xl(96px) Korean이 col-span-7(720px)에 안 들어감 + text-balance가 어색한 분할. 픽스: h1에 `break-keep` 추가(어절 단위 줄바꿈) + col-span-8 + xl:max-w-none + text-balance 제거. commit `651705f`. push.
+- GH Actions 양쪽 success. 라이브 검증:
+  - 데스크톱 1440 컴퓨티드 폰트: bodyFontFamily="Manrope, Pretendard, system-ui, sans-serif"; italicFontFamily="Instrument Serif, ui-serif, Georgia, serif". h1 어절 단위 wrap 정상.
+  - 모바일 390: 가로 스크롤 0, h1 200px 단일 컬럼 3-line 스택, 컨택 카드 above fold.
+  - 6 imgs 모두 complete=true, 콘솔 에러 0.
+- PRD 10 스토리 모두 pass=true. architect-medium STANDARD-tier APPROVE (no notes that block, no rejections).
+
+ralph PRD-driven 사이클 종료. 이번 라운드 commits: `399a751` `7b78a38` `651705f` (총 3건 main에). impeccable skill, PRODUCT.md, DESIGN.md repo에 영구 보존.
 
 ### 2026-05-03 17:43 — 턴 5 (Q3 답변 + PDF 제공)
 
