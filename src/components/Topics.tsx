@@ -1,5 +1,8 @@
 import topics from "../content/topics.json";
 
+const BASE = import.meta.env.BASE_URL;
+const asset = (p: string) => `${BASE}${p.replace(/^\//, "")}`;
+
 export default function Topics() {
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -13,7 +16,7 @@ export default function Topics() {
           >
             {t.icon && (
               <div className="w-11 h-11 rounded-lg bg-brand-50 flex items-center justify-center text-brand">
-                <img src={t.icon} alt="" aria-hidden="true" className="w-6 h-6" />
+                <img src={asset(t.icon)} alt="" aria-hidden="true" className="w-6 h-6" />
               </div>
             )}
             <h3 className="mt-4 font-bold text-lg text-slate-900">{t.title}</h3>

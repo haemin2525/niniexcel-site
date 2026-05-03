@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import products from "../content/products.json";
 
+const BASE = import.meta.env.BASE_URL;
+const asset = (p: string) => `${BASE}${p.replace(/^\//, "")}`;
+
 export default function ProductCards({ compact = false }: { compact?: boolean }) {
   return (
     <section className="bg-slate-50 border-y border-slate-100">
@@ -28,7 +31,7 @@ export default function ProductCards({ compact = false }: { compact?: boolean })
             >
               {p.thumbnail && (
                 <img
-                  src={p.thumbnail}
+                  src={asset(p.thumbnail)}
                   alt={`${p.name} 썸네일`}
                   className="w-full aspect-[5/3] object-cover"
                 />
