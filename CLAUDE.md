@@ -1,0 +1,36 @@
+# ProfileWebsite — 장혜민(니니엑셀) 프로필/강의 의뢰 사이트
+
+> 이 프로젝트는 강사/디지털 플래너 크리에이터/유튜버인 **장혜민**님의 프로필 사이트입니다. 남편(상래)이 함께 만들고, 추후 본인(혜민)이 직접 운영·확장합니다.
+
+## 핵심 컨텍스트
+
+- **사용자**: 장혜민 (haemin2525@gmail.com)
+- **유튜브**: https://www.youtube.com/@niniexcel
+- **텀블벅**: https://tumblbug.com/u/ewwfkjmcajgzmryk
+- **스마트스토어**: https://smartstore.naver.com/mondaykeeper
+- **목적**: 강의 의뢰자가 사이트를 보고 직접 컨택하도록 유도
+- **스택**: React + Tailwind, GitHub Pages 배포
+- **디자인 보조 도구**: Google Stitch (https://stitch.withgoogle.com/) 와 병행
+- **참고 자산**: `../프로필/profile/` 하위에 CV(한/영), Activities(외부 활동.md), Design(사진·벤치마킹) 보유
+
+## 🟡 작업 운영 규칙 (필수)
+
+### 1. 대화 로그 저장
+- 모든 대화는 **매 턴마다** `conversation.md`에 누적 저장한다.
+- 위치: 이 프로젝트 루트 (`ProfileWebsite/conversation.md`)
+- 상단에는 항상 다음을 유지·갱신한다:
+  - **목적(Purpose)**: 왜 이 프로젝트를 진행하는지
+  - **요약(Summary)**: 지금까지의 흐름 한눈에
+  - **다음 액션(Next)**: 바로 다음에 할 일
+- 본문은 시간 순서대로 `### YYYY-MM-DD HH:MM — 턴 N` 헤더 아래 추가한다.
+- 사용자 발화와 어시스턴트 응답을 모두 기록 (코드 블록은 그대로 유지)
+
+> 이유: 와이프(혜민)께서 클로드 코드 사용법을 학습 중이며, 이 대화 로그가 학습 자료로 활용됨. 빠뜨리지 말고 매 턴 갱신할 것.
+
+### 2. 답변 스타일
+- 한국어로 답변
+- 계획/설계 단계에서는 **한 번에 한 질문씩** 명확히 (브레인스토밍 스킬 준수)
+- 추천안에는 항상 **이유와 트레이드오프** 동반
+
+### 3. 구현 전 단계
+- 코드 작성 전 반드시 design doc → implementation plan 단계 거침 (`superpowers:brainstorming` → `superpowers:writing-plans`)
