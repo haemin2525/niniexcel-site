@@ -14,15 +14,20 @@ export default function PhraseLine({ children, className = "", as = "span" }: Pr
     if (!el) return;
 
     const measure = () => {
-      // Reset before measuring
+      // Reset before measuring.
       el.removeAttribute("data-overflow");
       el.style.removeProperty("font-size");
 
-      // Re-measure
+      // Re-measure on next frame after layout settles.
+      // NOTE: inline-block + nowrap yields scrollWidth === clientWidth on the
+      // element itself (it expands to content). Real overflow is detected by
+      // comparing the rendered width against the PARENT's available width.
       requestAnimationFrame(() => {
+        const parent = el.parentElement;
+        const limit = parent ? parent.clientWidth : window.innerWidth;
         let scale = 1;
         let guard = 0;
-        while (el.scrollWidth > el.clientWidth + 1 && guard < 6) {
+        while (el.getBoundingClientRect().width > limit + 1 && guard < 6) {
           scale *= 0.92;
           el.style.fontSize = `${scale}em`;
           el.setAttribute("data-overflow", "true");
