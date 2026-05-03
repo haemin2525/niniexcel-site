@@ -16,11 +16,11 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
           {/* Left column — eyebrow + headline */}
-          <div className="lg:col-span-7 min-w-0 max-w-2xl">
+          <div className="lg:col-span-8 min-w-0 max-w-2xl xl:max-w-none">
             <p className="text-xs uppercase tracking-[0.22em] text-ink-500 mb-6">
               {profile.title}
             </p>
-            <h1 className="font-display font-black tracking-tight leading-[0.95] text-ink-900 text-balance">
+            <h1 className="font-display font-black tracking-tight leading-[0.95] text-ink-900 break-keep">
               <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl hero-fade-up">
                 {editorialHeadline.line1}
               </span>
@@ -43,7 +43,7 @@ export default function Hero() {
           {/* Right column — contact card */}
           <div
             id="contact"
-            className="lg:col-span-5 min-w-0"
+            className="lg:col-span-4 min-w-0"
           >
             <div className="rounded-2xl border border-ink-200 bg-white shadow-sm p-8 max-w-sm">
               <p className="text-xs uppercase tracking-[0.22em] text-ink-400 mb-4">
