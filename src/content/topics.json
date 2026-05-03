@@ -1,8 +1,8 @@
 [
-  { "id": "excel", "title": "엑셀 실무", "summary": "비즈니스 데이터 정리·자동화의 베이스", "icon": "📊", "tags": ["VLOOKUP", "피벗", "함수", "자동화"] },
-  { "id": "claude-excel", "title": "클로드 + 엑셀", "summary": "패스트캠퍼스 시그니처 강의 — AI로 1시간 작업을 5분에", "icon": "🤖", "tags": ["Claude", "Gemini", "AI 자동화"] },
-  { "id": "data-viz", "title": "데이터 시각화", "summary": "인프런 정규 강의 — Tableau 기반 실무 시각화", "icon": "📈", "tags": ["Tableau", "대시보드"] },
-  { "id": "sql", "title": "SQL", "summary": "비즈니스 데이터를 직접 다루는 첫걸음", "icon": "🗄️", "tags": ["SQL", "쿼리", "분석"] },
-  { "id": "r", "title": "R", "summary": "통계·시각화·데이터 분석", "icon": "📐", "tags": ["R", "분석", "통계"] },
-  { "id": "ai-workflow", "title": "AI 업무 자동화", "summary": "현업 워크플로우에 AI를 자연스럽게 끼워넣기", "icon": "⚙️", "tags": ["Claude", "Gemini", "워크플로우"] }
+  { "id": "excel", "title": "엑셀 실무", "summary": "비즈니스 데이터 정리·자동화의 베이스", "icon": "/icons/topics/excel.svg", "tags": ["VLOOKUP", "피벗", "함수", "자동화"] },
+  { "id": "claude-excel", "title": "클로드 + 엑셀", "summary": "패스트캠퍼스 시그니처 강의 — AI로 1시간 작업을 5분에", "icon": "/icons/topics/claude-excel.svg", "tags": ["Claude", "Gemini", "AI 자동화"] },
+  { "id": "data-viz", "title": "데이터 시각화", "summary": "인프런 정규 강의 — Tableau 기반 실무 시각화", "icon": "/icons/topics/data-viz.svg", "tags": ["Tableau", "대시보드"] },
+  { "id": "sql", "title": "SQL", "summary": "비즈니스 데이터를 직접 다루는 첫걸음", "icon": "/icons/topics/sql.svg", "tags": ["SQL", "쿼리", "분석"] },
+  { "id": "r", "title": "R", "summary": "통계 분석과 시각화의 베이스", "icon": "/icons/topics/r.svg", "tags": ["R", "분석", "통계"] },
+  { "id": "ai-workflow", "title": "AI 업무 자동화", "summary": "현업 워크플로우에 AI를 자연스럽게 끼워 넣기", "icon": "/icons/topics/ai-workflow.svg", "tags": ["Claude", "Gemini", "워크플로우"] }
 ]

@@ -6,11 +6,18 @@ export default function About() {
     <section id="about" className="bg-slate-50 border-y border-slate-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">강사 소개</h2>
-        <p className="mt-4 max-w-3xl text-slate-600">{intro}</p>
+        <p className="mt-4 max-w-3xl text-slate-600 leading-relaxed">{intro}</p>
         <div className="mt-10 grid sm:grid-cols-3 gap-4">
           {strengths.map((s, i) => (
-            <div key={i} className="rounded-xl bg-white border border-slate-200 p-5 shadow-sm">
-              <p className="text-sm text-slate-700 leading-relaxed">{s}</p>
+            <div
+              key={i}
+              className="relative rounded-xl bg-white border border-slate-200 p-5 shadow-sm overflow-hidden"
+            >
+              <span
+                aria-hidden="true"
+                className="absolute left-0 top-4 bottom-4 w-1 rounded-r bg-accent"
+              />
+              <p className="pl-3 text-sm text-slate-700 leading-relaxed">{s}</p>
             </div>
           ))}
         </div>
@@ -30,7 +37,7 @@ export default function About() {
             <h3 className="font-semibold text-slate-900 mb-3">자격</h3>
             <div className="flex flex-wrap gap-2">
               {certifications.map((c) => (
-                <span key={c} className="inline-flex px-3 py-1 rounded-full bg-brand/10 text-brand text-sm font-medium">{c}</span>
+                <span key={c} className="inline-flex px-3 py-1 rounded-full bg-brand-50 text-brand text-sm font-medium">{c}</span>
               ))}
             </div>
           </div>

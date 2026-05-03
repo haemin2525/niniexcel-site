@@ -10,7 +10,10 @@ export default function TalkList({ compact = false }: { compact?: boolean }) {
         <div className="flex items-end justify-between gap-4 flex-wrap">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">강의 이력</h2>
           {compact && (
-            <Link to="/talks" className="text-sm font-medium text-brand hover:underline">
+            <Link
+              to="/talks"
+              className="text-sm font-medium text-brand hover:underline rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+            >
               전체 보기 →
             </Link>
           )}

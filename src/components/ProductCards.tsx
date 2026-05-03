@@ -8,17 +8,30 @@ export default function ProductCards({ compact = false }: { compact?: boolean })
         <div className="flex items-end justify-between gap-4 flex-wrap">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">디지털 플래너</h2>
           {compact && (
-            <Link to="/products" className="text-sm font-medium text-brand hover:underline">
+            <Link
+              to="/products"
+              className="text-sm font-medium text-brand hover:underline rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+            >
               전체 보기 →
             </Link>
           )}
         </div>
         <div className="mt-10 grid sm:grid-cols-2 gap-6">
           {products.map((p) => (
-            <a key={p.id} href={p.url} target="_blank" rel="noopener noreferrer"
-               className="group rounded-xl border border-slate-200 bg-white overflow-hidden hover:border-brand transition">
+            <a
+              key={p.id}
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${p.name} (새 창)`}
+              className="group rounded-xl border border-slate-200 bg-white overflow-hidden hover:border-brand hover:shadow-md hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 transition-all duration-200"
+            >
               {p.thumbnail && (
-                <img src={p.thumbnail} alt={p.name} className="w-full aspect-[5/3] object-cover" />
+                <img
+                  src={p.thumbnail}
+                  alt={`${p.name} 썸네일`}
+                  className="w-full aspect-[5/3] object-cover"
+                />
               )}
               <div className="p-5">
                 <p className="font-semibold text-slate-900 group-hover:text-brand">{p.name}</p>

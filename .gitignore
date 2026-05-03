@@ -23,3 +23,6 @@ logs
 *.log
 npm-debug.log*
 yarn-debug.log*
+
+# OMC orchestrator state (local only)
+.omc/
