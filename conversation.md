@@ -15,8 +15,8 @@
 - 1차 빌드 완료(24 commits) 후 OMD 시스템(11 agents · 4 stage · 3 checkpoint)으로 refinement 패스 1회 완료
 
 ## 다음 액션 (Next)
-- 본인 결정 후보: 프로필 사진 / og:image / favicon 자산 라운드, 강의 후기(Testimonial), 커스텀 도메인
-- ralph PRD 10 stories all PASS, architect APPROVE — no immediate work
+- ralph PRD Z-001~Z-008 all PASS, architect APPROVE — 제로베이스 warm-dark 리빌드 라이브
+- 다음 라운드 후보: 프로필 사진(Hero 우측 컬럼?), favicon 마크 다듬기, 콘텐츠(헤드라인/플래너/유튜브 임베드) 정식 카피로 교체, 모션 디테일 (masked text reveal를 phrase span에 적용 — 현재는 anim-fade-up만), 강의 후기(Testimonial) 섹션
 
 ---
 
@@ -143,6 +143,31 @@
 - PRD 10 스토리 모두 pass=true. architect-medium STANDARD-tier APPROVE (no notes that block, no rejections).
 
 ralph PRD-driven 사이클 종료. 이번 라운드 commits: `399a751` `7b78a38` `651705f` (총 3건 main에). impeccable skill, PRODUCT.md, DESIGN.md repo에 영구 보존.
+
+### 2026-05-04 06:18 — 턴 17 (제로베이스 warm-dark 리빌드, 두 번째 ralph 사이클)
+
+**사용자 (3번 정정 누적):**
+1. 제로베이스로. 기존 페이지 구조와 기준 다 부수고 새롭게.
+2. Hero(강사 소개+컨택) + 강의 이력 + 가능 강의 리스트 3섹션. 심플/큼직/차별적.
+3. **문장과 구 단위는 반드시 한 줄.** 좌우폭 때문에 어설프게 줄바꿈되면 안 됨.
+4. neuform.ai 사례 참고. /omc /ralph /pair-agent /frontend-ui-ux /frontend-design /omd /omd-sync, 특히 /subagent-driven-development 적용. **codex도 멀티 에이전트 중 하나로**. 리드 에이전트가 병렬 worker 진척 인쇄.
+5. 추가 정정: 디자인 high-quality (콘텐츠는 샘플 OK), **따뜻한 검정 다크 모드** (베이지 라이트 모드 아님).
+6. 추가 정정: bypass permissions on, 끝까지 완료 (commit + push + 배포).
+
+**어시스턴트 (lead 오케스트레이션):**
+- Plan mode에서 woolly-dazzling-meadow.md plan 작성 → ExitPlanMode → 실행 진입.
+- `.omc/prd.json`에 Z-001~Z-008 8 stories (task-specific AC).
+- **Phase 1 (3 parallel workers)**: A=29 legacy file teardown (29 git rm), B=warm-dark 토큰 + index.css/index.html/App.tsx 스텁/favicon 재작성, C=DESIGN.md v2 + PRODUCT.md v2.
+- **Phase 2 (4 parallel workers)**: W1=Hero+ContactCard+Pill+PhraseLine+Background.tsx (opus, load-bearing), W2=Frame+ProcessGrid+ProcessPanel.tsx (sonnet), W3=Home+App+content/site.ts (haiku 와이어업), **W4=codex via `omc ask codex`** (advisory: 디자인 컨트랙트 critique — 컨트라스트, 한글 타이포 트랩, 단일 라인 메커니즘 리스크 분석. 결과는 .omc/artifacts/ask/ 에 저장됨).
+- 코덱스 발견: `muted #7A6E5C`가 canvas에서 3.78:1 → 소형 텍스트 WCAG AA 미달. 픽스 적용 → `#968976` (≈4.7:1). 다른 토큰은 강함 (head 15.42:1, body 10.22:1).
+- **Phase 3 (2 parallel reviewers)**: R1=spec-compliance reviewer Z-001~Z-008 8 stories 각 AC pass/fail (APPROVE), R2=code-reviewer SOLID/안티패턴 (APPROVE_WITH_NOTES — 2 IMPORTANT + 5 NIT). 리드가 직접 7개 픽스 적용 (invalid `html { lang: }` CSS 제거, 중복 body bg 제거, jsdelivr preconnect 추가, PhraseLine 주석 보강, ProcessPanel body PhraseLine 해제, Hero subject → site.ts, Home 인라인 phrase → PhraseLine).
+- **Phase 4 (build/push/deploy)**: commit `b2fa66d` "rebuild: zero-base warm-dark · single-line Hero + ProcessGrid · Space Grotesk + Pretendard · 8 components, 1 page, 1 content source" 푸시. Deploy + pages-build-deployment 양쪽 success.
+- 라이브 검증 1440/768 GREEN. **모바일 390에서 horizontal scroll +64px 발견** — 원인: PhraseLine의 overflow 감지가 element 자체 scrollWidth/clientWidth 비교 (inline-block+nowrap이면 둘이 항상 같아서 절대 안 트리거). 픽스: `parent.clientWidth` 비교로 변경. commit `bf6c027` "fix(phrase): compare against parent.clientWidth". 재배포 후 모바일 390 GREEN — phrase overflow 0, multi-line 0, ResizeObserver가 1개 phrase에 0.92x 자동 축소 적용 (정확히 의도한 fallback).
+- **Phase 5 architect verification**: STANDARD-tier sonnet, Z-001~Z-008 모두 PASS, no blockers. Notes 3건 모두 non-blocking (hover bg-surface-1 vs spec text bg-surface-3 미세 wording drift, focus-visible box-shadow vs ring-utility 표현, PhraseLine `as` 타입 가드).
+- 새 워밍 다크 캔버스: bg #14110D, head #F0E8D5 (15.42:1), accent #D4A063 (8.07:1). Space Grotesk + Pretendard. ProcessGrid 4-cell hairline-divider. anim-fade-up 600ms cubic-bezier 스태거드 mount, prefers-reduced-motion 게이트.
+- 결과 commits: `b2fa66d` `bf6c027`. 라이브 https://haemin2525.github.io/biz/ HTTP 200, 콘솔 에러 0, 실명 0, 가로 스크롤 0 (1440/768/390).
+
+ralph 사이클 종료. `/oh-my-claudecode:cancel` clean exit.
 
 ### 2026-05-03 17:43 — 턴 5 (Q3 답변 + PDF 제공)
 
