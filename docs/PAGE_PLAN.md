@@ -41,7 +41,7 @@ C. 강의 플랫폼 PD — 인프런·패스트캠퍼스 등 콘텐츠 디렉터
 
 ## 4. 단일 핵심 메시지 (thesis line)
 
-> **"엑셀과 AI를 실무에서 바로 쓰게 가르칩니다."**
+> **"엑셀과 AI를 실무에서 바로 쓰도록 가르칩니다."**
 
 Hero h1로 노출. About 별도 섹션 없음 (페이지 안 자기소개 narrative 제거).
 
@@ -78,8 +78,8 @@ About 제거됨. 자기소개는 ProcessGrid + 명단 strip + Talks가 떠받침
 |---|---|
 | 의도 | 한 호흡에 brand statement 전달 |
 | eyebrow pill | "NINIEXCEL · INSTRUCTOR" (chip-gray pill) |
-| h1 (메시지) | "엑셀과 AI를 실무에서 바로 쓰게 가르칩니다." |
-| 서브헤드 | (TBD — 다음 사이클에서 결정 또는 생략) |
+| h1 (메시지) | "엑셀과 AI를 실무에서 바로 쓰도록 가르칩니다." |
+| 서브헤드 | **없음** — 한 줄로 임팩트 강화 (2026-05-10 확정) |
 | Primary CTA | "**강의 의뢰하기**" → `/inquiry` (ink black pill) |
 | Secondary CTA | "유튜브 둘러보기" → 외부 링크 (white border pill) |
 | 노출 위치 | ContactCard 내부 (Hero 아래쪽) |
@@ -116,14 +116,14 @@ About 제거됨. 자기소개는 ProcessGrid + 명단 strip + Talks가 떠받침
 | 4 | 클로드인엑셀 | 셀·시트 안에서 단발 AI 호출 | wiki/topics/claude-in-excel |
 | 5 | 클로드코워크로 엑셀 자동화 | 엑셀 잘 다루는 사람 → 엑셀을 시키는 사람 | wiki/topics/claude-cowork-automation |
 
-각 카드 클릭 시: (TBD) `/inquiry?course=<slug>` 같은 식으로 prefill, 또는 강의 상세 페이지
+**카드 클릭 동작**: 페이지 안 모달이 열림. 모달 구성 = (1) 상세 커리큘럼 (2) 소요시간 약 N시간 (3) 안내문구 "상세 커리큘럼은 조율 가능합니다." 모달 하단 [이 강의 의뢰하기] 버튼 → `/inquiry?course=<slug>` 로 이동하며 드롭다운 자동 선택. (2026-05-10 확정)
 
 ### 6.5 Talks — 출강 이력
 
 | 항목 | 값 |
 |---|---|
 | 의도 | 검증된 출강 이력 — 신뢰 강화 (명단 strip의 풀버전) |
-| 구성 | 시간 역순 timeline, 카테고리(기업/공공/플랫폼) 라벨 |
+| 구성 | **세로 timeline** (시간 역순) — 왼쪽 세로선 + 날짜 노드 + 기관명·주제. 카테고리(기업/공공/플랫폼) 라벨 (2026-05-10 확정) |
 | 자료 | wiki/lectures/index.md |
 | CTA | (선택) "전체 이력 보기" → `/talks` |
 
@@ -132,7 +132,7 @@ About 제거됨. 자기소개는 ProcessGrid + 명단 strip + Talks가 떠받침
 | 항목 | 값 |
 |---|---|
 | 의도 | 강의 톤 미리보기 (fit 검증) |
-| 구성 | @niniexcel 채널 임베드 1개 + 추천 영상 4개 카드 |
+| 구성 | @niniexcel 채널 임베드 1개 + **조회수 TOP 4 자동 노출** (Youtube Data API 또는 임베드 playlist) (2026-05-10 확정) |
 | CTA | "유튜브에서 더 보기" → 외부 채널 |
 
 ### 6.7 Products — 디지털 플래너
@@ -140,7 +140,7 @@ About 제거됨. 자기소개는 ProcessGrid + 명단 strip + Talks가 떠받침
 | 항목 | 값 |
 |---|---|
 | 의도 | 콘텐츠 깊이 (집필·플래너 등 부수 활동) |
-| 구성 | 디지털 플래너 카드 (텀블벅 / 스마트스토어 링크) |
+| 구성 | 디지털 플래너 카드 — **제품 사진 동반** (텀블벅 / 스마트스토어 링크). 사진 톤은 일관성 유지 (흑백·화이트 배경 권장) (2026-05-10 확정) |
 | 비고 | 『클로드엑셀』(가안) 집필 중 — 출간 시 추가 |
 
 ### 6.8 Contact — 마지막 안전망
@@ -156,7 +156,7 @@ About 제거됨. 자기소개는 ProcessGrid + 명단 strip + Talks가 떠받침
 |---|---|
 | 의도 | 의뢰자가 메일 작성 부담 없이 빈칸 채우게 → 1메일 = 1전환 효율↑ |
 | 폼 항목 (예시) | 기관명 / 담당자 이름·직책 / 연락처(이메일·전화) / 의뢰 강의 카테고리(5개 중 선택) / 희망 일정·시간 / 청중 정보(인원·연차·부서) / 추가 문의 |
-| 제출 처리 | (TBD) Formspree / Tally / Netlify Forms / 단순 mailto 중 선택 |
+| 제출 처리 | **Formspree** 무료 플랜 (월 50건). form action URL 1개로 GitHub Pages와 100% 호환. 제출 시 haemin2525@gmail.com 으로 자동 메일 전송. 스팸 필터 내장. (2026-05-10 확정) |
 
 ## 7. 디자인 컨트랙트 준수 (DESIGN.md = Uber)
 
@@ -168,12 +168,12 @@ About 제거됨. 자기소개는 ProcessGrid + 명단 strip + Talks가 떠받침
 
 ## 8. 미해결 / 다음 사이클 결정
 
-1. **Hero 서브헤드** — 한 줄 더 둘지 / 빼고 깔끔하게 갈지
-2. **Topics 카드 클릭 동작** — `/inquiry?course=<slug>` prefill / 별도 강의 상세 페이지 / 모달 펼침
-3. **Talks timeline 스타일** — 카드 그리드 / 세로 timeline / 표
-4. **Youtube 영상 4개 선정** — 어떤 영상을 추천 카드로 노출할지
-5. **Products 카드 — 이미지 동반?** — 흑백 톤에서 이미지가 어울릴까
-6. **/inquiry 폼 서비스** — Formspree(무료, 메일 자동 전송) / Tally(폼 빌더) / Netlify Forms(GH Pages 호스팅이라 부적합) / mailto(가장 단순)
+1. ✅ ~~Hero 서브헤드~~ — **빼고 한 줄로 확정** (2026-05-10)
+2. ✅ ~~Topics 카드 클릭~~ — **페이지 안 모달** (커리큘럼·소요시간·조율 안내) + [의뢰하기]→/inquiry prefill (2026-05-10)
+3. ✅ ~~Talks timeline 스타일~~ — **세로 timeline 확정** (2026-05-10)
+4. ✅ ~~Youtube 영상 4개~~ — **조회수 TOP 4 자동 노출** (2026-05-10)
+5. ✅ ~~Products 카드 이미지~~ — **제품 사진 동반 확정**, 톤 일관성 유지 (2026-05-10)
+6. ✅ ~~/inquiry 폼 서비스~~ — **Formspree** 무료 플랜 확정 (haemin2525@gmail.com 자동 전송) (2026-05-10)
 
 ## 9. 구현 순서 (단계 5 진행 시)
 
