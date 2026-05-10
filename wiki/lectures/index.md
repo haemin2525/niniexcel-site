@@ -7,9 +7,9 @@ sources:
   - sources/강의 이력.md
 related:
   - people/janghyemin
-  - topics/excel-fundamentals
+  - topics/excel-basic
   - topics/claude-in-excel
-  - topics/automation-cowork
+  - topics/claude-cowork-automation
 tags: [강의이력, 출강, 기업, 공공기관, 플랫폼]
 ---
 
@@ -73,6 +73,6 @@ tags: [강의이력, 출강, 기업, 공공기관, 플랫폼]
 ## Cross-reference
 
 - [[people/janghyemin]] — 강사 페이지
-- [[topics/excel-fundamentals]]
+- [[topics/excel-basic]]
 - [[topics/claude-in-excel]]
-- [[topics/automation-cowork]]
+- [[topics/claude-cowork-automation]]

@@ -7,8 +7,8 @@ sources:
   - sources/진행 강의.md
 related:
   - people/janghyemin
-  - topics/excel-fundamentals
-  - topics/automation-cowork
+  - topics/excel-basic
+  - topics/claude-cowork-automation
   - lectures/index
 tags: [클로드, AI, 엑셀, Claude-in-Excel, 패스트캠퍼스]
 ---
@@ -40,7 +40,7 @@ tags: [클로드, AI, 엑셀, Claude-in-Excel, 패스트캠퍼스]
 - 여러 파일 넘나드는 작업이 어려운 이유
 - 어떤 업무는 클로드 웹·코워크가 더 적합한지
 
-> 위 한계를 넘어가는 그 다음 단계가 [[topics/automation-cowork]] (AI 자동화 종합반).
+> 위 한계를 넘어가는 그 다음 단계가 [[topics/claude-cowork-automation]] (AI 자동화 종합반).
 
 ## 진행 이력
 
@@ -49,6 +49,6 @@ tags: [클로드, AI, 엑셀, Claude-in-Excel, 패스트캠퍼스]
 ## Cross-reference
 
 - [[people/janghyemin]]
-- [[topics/excel-fundamentals]]
-- [[topics/automation-cowork]]
+- [[topics/excel-basic]]
+- [[topics/claude-cowork-automation]]
 - [[lectures/index]]

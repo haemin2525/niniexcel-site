@@ -11,3 +11,15 @@
 - 14:51 — [write] people/janghyemin.md — 강사 인물 페이지 (이력서 PDF + 강의 이력 흡수)
 - 14:55 — [write] topics/excel-fundamentals.md, claude-in-excel.md, automation-cowork.md (3개 주제 페이지)
 - 14:55 — [write] lectures/index.md (강의 이력 통합 색인 — 13개 기관 + 5개 플랫폼)
+
+## 2026-05-10 (오후)
+
+- 16:00 — [reorg] topics 3개 → 5개 재편 (혜민님 결정)
+  - 삭제: excel-fundamentals.md, automation-cowork.md
+  - 신규: excel-basic, excel-intermediate, pivot-table, claude-cowork-automation
+  - 유지: claude-in-excel
+- 16:00 — [update] index.md — 5 토픽 색인 + 통계 갱신
+- 16:00 — [update] cross-references — people/janghyemin, lectures/index, claude-in-excel
+- 16:05 — [decision] page-plan v1 작성 — 페르소나 인터뷰 6턴 결과
+  - docs/PAGE_PLAN.md (199줄, 본문)
+  - wiki/decisions/page-plan-v1.md (요약 + cross-ref)

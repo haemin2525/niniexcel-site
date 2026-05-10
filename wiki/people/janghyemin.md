@@ -7,9 +7,9 @@ sources:
   - sources/강사프로필_장혜민.pdf
   - sources/강의 이력.md
 related:
-  - topics/excel-fundamentals
+  - topics/excel-basic
   - topics/claude-in-excel
-  - topics/automation-cowork
+  - topics/claude-cowork-automation
   - lectures/index
 tags: [강사, 엑셀, 데이터, AI, 니니의엑셀, 6년차, 비전공자, MD-출신]
 ---
@@ -82,7 +82,7 @@ tags: [강사, 엑셀, 데이터, AI, 니니의엑셀, 6년차, 비전공자, MD
 
 ## 진행 가능 강의 (요약)
 
-자세한 커리큘럼은 [[topics/excel-fundamentals]] / [[topics/claude-in-excel]] / [[topics/automation-cowork]] 참고.
+자세한 커리큘럼은 [[topics/excel-basic]] / [[topics/claude-in-excel]] / [[topics/claude-cowork-automation]] 참고.
 
 1. **엑셀 기본기 시리즈** — 입문 / 실전 (단축키, 데이터 클렌징, 함수, 피벗테이블)
 2. **단일 기능 심화** — 피벗테이블 단독 클래스 / 클로드 인 엑셀
@@ -102,7 +102,7 @@ tags: [강사, 엑셀, 데이터, AI, 니니의엑셀, 6년차, 비전공자, MD
 
 ## Cross-reference
 
-- [[topics/excel-fundamentals]]
+- [[topics/excel-basic]]
 - [[topics/claude-in-excel]]
-- [[topics/automation-cowork]]
+- [[topics/claude-cowork-automation]]
 - [[lectures/index]]
