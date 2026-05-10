@@ -18,7 +18,7 @@ export default function ContactCard({
   return (
     <section
       id="contact"
-      className="mt-12 sm:mt-16 anim-fade-up"
+      className="mt-10 sm:mt-12 anim-fade-up"
       style={{ animationDelay: "480ms" }}
       aria-labelledby="contact-heading"
     >

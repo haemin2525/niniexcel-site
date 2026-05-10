@@ -7,7 +7,7 @@ export default function Hero() {
   const { hero, contact, social } = site;
 
   return (
-    <header className="py-32 sm:py-40 lg:py-48">
+    <header className="py-20 sm:py-28 lg:py-32">
       <div className="anim-fade-up" style={{ animationDelay: "0ms" }}>
         <Pill tone="muted">
           <PhraseLine>{hero.eyebrow}</PhraseLine>
