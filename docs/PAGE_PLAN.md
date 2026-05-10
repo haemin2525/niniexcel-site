@@ -156,7 +156,7 @@ About 제거됨. 자기소개는 ProcessGrid + 명단 strip + Talks가 떠받침
 |---|---|
 | 의도 | 의뢰자가 메일 작성 부담 없이 빈칸 채우게 → 1메일 = 1전환 효율↑ |
 | 폼 항목 (확정 7개) | (1) 기업·기관명 (2) 담당자 이름 (3) 연락처(이메일) (4) 관심 강의 — 5개 카테고리 + "아직 미정" 드롭다운 (5) 희망 일정 (6) 수강 대상 정보 — 예시: "신입사원 50명, 입사 1년차 OT 교육" (7) 세부 문의 내용 (옵션). 1~6 필수, 7 선택. (2026-05-10 확정) |
-| 제출 처리 | **Formspree** 무료 플랜 (월 50건). form action URL 1개로 GitHub Pages와 100% 호환. 제출 시 haemin2525@gmail.com 으로 자동 메일 전송. 스팸 필터 내장. (2026-05-10 확정) |
+| 제출 처리 | **Google Apps Script** web app 자체 endpoint. 제출 → 시트에 행 단위 누적 + haemin2525@naver.com 으로 자동 메일 알림. 무료 영구. 외부 SaaS 의존성 0. 페이지 안 fetch + JSON 응답 + 전송 완료 패널. (2026-05-10 확정, Formspree에서 전환) |
 
 ## 7. 디자인 컨트랙트 준수 (DESIGN.md = Uber)
 
@@ -173,7 +173,7 @@ About 제거됨. 자기소개는 ProcessGrid + 명단 strip + Talks가 떠받침
 3. ✅ ~~Talks timeline 스타일~~ — **세로 timeline 확정** (2026-05-10)
 4. ✅ ~~Youtube 영상 4개~~ — **조회수 TOP 4 자동 노출** (2026-05-10)
 5. ✅ ~~Products 카드 이미지~~ — **제품 사진 동반 확정**, 톤 일관성 유지 (2026-05-10)
-6. ✅ ~~/inquiry 폼 서비스~~ — **Formspree** 무료 플랜 확정 (haemin2525@gmail.com 자동 전송) (2026-05-10)
+6. ✅ ~~/inquiry 폼 서비스~~ — **Google Apps Script** 자체 endpoint, 시트 누적 + naver.com 메일 알림 (2026-05-10)
 
 ## 9. 구현 순서 (단계 5 진행 시)
 

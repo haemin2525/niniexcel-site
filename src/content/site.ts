@@ -27,7 +27,7 @@ export const site = {
     },
   ],
   inquiry: {
-    formspreeEndpoint: "https://formspree.io/f/mvzlvdbp",
+    endpoint: "https://script.google.com/macros/s/AKfycbxwBPyfForzV57VCnDtpLMtiCSpJlajXqskPftLXF2TZAL2hcComf_ZZDofXXSu_BcO/exec",
     title: "강의 의뢰하기",
     intro: "아래 항목을 채워 보내주시면 2영업일 이내에 회신드립니다.",
     topics: [
