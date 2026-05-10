@@ -9,9 +9,23 @@ export const site = {
     headline2: "바로 쓰도록 가르칩니다.",
   },
   contact: {
-    email: "haemin2525@gmail.com",
+    email: "haemin2525@naver.com",
     inquiryRoute: "#/inquiry",
   },
+  clientele: [
+    {
+      label: "기업",
+      items: ["현대자동차", "한샘", "광주은행", "OK저축은행", "롯데케미칼"],
+    },
+    {
+      label: "공공",
+      items: ["한국경제진흥원", "도봉구청", "한밭대", "군포시청", "하남시청", "철도노조", "서울장학재단"],
+    },
+    {
+      label: "플랫폼",
+      items: ["인프런", "패스트캠퍼스", "탈잉", "크몽", "프립"],
+    },
+  ],
   inquiry: {
     formspreeEndpoint: "https://formspree.io/f/mvzlvdbp",
     title: "강의 의뢰하기",

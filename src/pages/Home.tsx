@@ -1,6 +1,7 @@
 import Background from "../components/Background";
 import Frame from "../components/Frame";
 import Hero from "../components/Hero";
+import ClienteleStrip from "../components/ClienteleStrip";
 import PhraseLine from "../components/PhraseLine";
 import ProcessGrid from "../components/ProcessGrid";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <Background />
       <Frame>
         <Hero />
+        <ClienteleStrip />
         <ProcessGrid />
         <footer className="py-12 mt-32 sm:mt-40 border-t border-ink/10">
           <p className="text-[11px] uppercase tracking-[0.18em] text-muted-gray font-medium">

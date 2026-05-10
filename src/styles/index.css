@@ -46,3 +46,24 @@ body {
   box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #000000;
   border-radius: 4px;
 }
+
+/* Clientele Strip — marquee (gated by reduced-motion) */
+@keyframes marquee-x {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-track {
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: 2.5rem;
+  white-space: nowrap;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    animation: marquee-x var(--marquee-duration, 40s) linear infinite;
+  }
+  .marquee-row:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
