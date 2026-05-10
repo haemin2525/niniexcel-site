@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Frame from "../components/Frame";
 import PhraseLine from "../components/PhraseLine";
@@ -7,6 +7,8 @@ import { site } from "../content/site";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+type Option = { slug: string; label: string };
+
 export default function Inquiry() {
   const { inquiry } = site;
   const [params] = useSearchParams();
@@ -14,13 +16,20 @@ export default function Inquiry() {
   const [status, setStatus] = useState<Status>("idle");
   const formRef = useRef<HTMLFormElement>(null);
 
+  const options: Option[] = useMemo(
+    () => [
+      ...site.topics.map((t) => ({ slug: t.slug, label: t.head })),
+      { slug: "undecided", label: "아직 미정" },
+    ],
+    [],
+  );
+
   useEffect(() => {
     const slug = params.get("course");
-    if (slug) {
-      const topic = inquiry.topics.find((t) => t.slug === slug);
-      if (topic) setCourse(topic.label);
-    }
-  }, [params, inquiry.topics]);
+    if (!slug) return;
+    const opt = options.find((o) => o.slug === slug);
+    if (opt) setCourse(opt.label);
+  }, [params, options]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,10 +37,7 @@ export default function Inquiry() {
     const formData = new FormData(form);
     setStatus("submitting");
     try {
-      const res = await fetch(inquiry.endpoint, {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetch(inquiry.endpoint, { method: "POST", body: formData });
       if (res.ok) {
         setStatus("success");
         form.reset();
@@ -91,18 +97,8 @@ export default function Inquiry() {
         >
           <input type="hidden" name="_subject" value="[강의 의뢰] niniexcel-site" />
 
-          <Field
-            label="기업·기관명"
-            name="organization"
-            required
-            placeholder="예: 한국경제진흥원"
-          />
-          <Field
-            label="담당자 이름"
-            name="contact_name"
-            required
-            placeholder="예: 김혜민"
-          />
+          <Field label="기업·기관명" name="organization" required placeholder="예: 한국경제진흥원" />
+          <Field label="담당자 이름" name="contact_name" required placeholder="예: 김혜민" />
           <Field
             label="연락처 (이메일)"
             name="email"
@@ -117,15 +113,10 @@ export default function Inquiry() {
             required
             value={course}
             onChange={setCourse}
-            options={inquiry.topics}
+            options={options}
           />
 
-          <Field
-            label="희망 일정"
-            name="schedule"
-            required
-            placeholder="예: 2026년 6월 중 평일 오후 4시간"
-          />
+          <Field label="희망 일정" name="schedule" required placeholder="예: 2026년 6월 중 평일 오후 4시간" />
           <Field
             label="수강 대상 정보"
             name="audience"
@@ -142,7 +133,7 @@ export default function Inquiry() {
 
           {status === "error" && (
             <p className="mt-6 text-[14px] text-ink leading-[1.55]" role="alert">
-              전송에 실패했어요. 잠시 후 다시 시도하시거나
+              전송에 실패했어요. 잠시 후 다시 시도하시거나{" "}
               <a
                 href="mailto:haemin2525@naver.com"
                 className="underline underline-offset-2 hover:text-body-gray"
