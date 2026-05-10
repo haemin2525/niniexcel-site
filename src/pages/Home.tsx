@@ -11,8 +11,8 @@ export default function Home() {
       <Frame>
         <Hero />
         <ProcessGrid />
-        <footer className="py-12 mt-32 sm:mt-40 border-t border-hairline">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-muted font-medium">
+        <footer className="py-12 mt-32 sm:mt-40 border-t border-ink/10">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-muted-gray font-medium">
             <PhraseLine>© 2026 NINIEXCEL · 니니의엑셀</PhraseLine>
           </p>
         </footer>

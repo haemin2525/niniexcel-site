@@ -7,13 +7,14 @@ type Props = {
 };
 
 export default function Pill({ children, tone = "muted", className = "" }: Props) {
+  // Uber chips: pure pill, no border. Active = ink/paper inversion.
   const toneClass =
     tone === "accent"
-      ? "text-accent border-accent-soft bg-surface-2"
-      : "text-muted border-hairline bg-surface-2";
+      ? "bg-ink text-paper"
+      : "bg-chip-gray text-ink";
   return (
     <span
-      className={`inline-flex items-center px-3 py-1 rounded-[6px] border text-[11px] uppercase tracking-[0.20em] font-medium ${toneClass} ${className}`}
+      className={`inline-flex items-center px-3 py-1 rounded-pill-full text-[11px] uppercase tracking-[0.20em] font-medium ${toneClass} ${className}`}
     >
       {children}
     </span>

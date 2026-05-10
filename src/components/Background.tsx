@@ -1,12 +1,5 @@
+// Uber design has no background gradient. Body bg-paper handles canvas.
+// Component kept as no-op for API compatibility with existing Home import.
 export default function Background() {
-  return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none fixed inset-0 -z-10"
-      style={{
-        background:
-          "radial-gradient(120% 80% at 50% -10%, #221C16 0%, #14110D 60%)",
-      }}
-    />
-  );
+  return null;
 }

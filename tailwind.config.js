@@ -4,26 +4,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        canvas: "#14110D",
-        "surface-1": "#1A1612",
-        "surface-2": "#221C16",
-        "surface-3": "#2C251D",
-        hairline: "#3A3127",
-        muted: "#968976",
-        body: "#C9BEA6",
-        head: "#F0E8D5",
-        accent: "#D4A063",
-        "accent-soft": "#5C4528",
+        ink: "#000000",
+        paper: "#FFFFFF",
+        "hover-gray": "#E2E2E2",
+        "hover-light": "#F3F3F3",
+        "chip-gray": "#EFEFEF",
+        "body-gray": "#4B4B4B",
+        "muted-gray": "#AFAFAF",
       },
       fontFamily: {
-        sans: ['"Space Grotesk"', "Pretendard", "system-ui", "sans-serif"],
-        display: ['"Space Grotesk"', "Pretendard", "system-ui", "sans-serif"],
+        sans: ['"Inter"', "Pretendard", "system-ui", '"Helvetica Neue"', "Helvetica", "Arial", "sans-serif"],
+        display: ['"Inter"', "Pretendard", "system-ui", '"Helvetica Neue"', "Helvetica", "Arial", "sans-serif"],
       },
       letterSpacing: {
         tightest: "-0.025em",
       },
-      backgroundImage: {
-        "warm-wash": "radial-gradient(120% 80% at 50% -10%, #221C16 0%, #14110D 60%)",
+      borderRadius: {
+        "pill-full": "999px",
+      },
+      boxShadow: {
+        "card-light": "0px 4px 16px rgba(0, 0, 0, 0.12)",
+        "card-medium": "0px 4px 16px rgba(0, 0, 0, 0.16)",
+        "press": "inset 0px 0px 0px 2px rgba(0, 0, 0, 0.08)",
       },
     },
   },

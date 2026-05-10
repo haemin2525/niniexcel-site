@@ -9,7 +9,7 @@ export default function ProcessGrid() {
       className="mt-32 sm:mt-40 lg:mt-48 anim-fade-up"
       style={{ animationDelay: "640ms" }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-hairline rounded-[12px] overflow-hidden border border-hairline">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {panels.map((p) => (
           <ProcessPanel
             key={p.label}
