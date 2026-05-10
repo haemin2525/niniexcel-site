@@ -3,10 +3,18 @@ import PhraseLine from "./PhraseLine";
 type Props = {
   email: string;
   primaryHref: string;
+  primaryLabel?: string;
+  primaryAriaLabel?: string;
   secondaryHref: string;
 };
 
-export default function ContactCard({ email, primaryHref, secondaryHref }: Props) {
+export default function ContactCard({
+  email,
+  primaryHref,
+  primaryLabel = "메일로 문의하기",
+  primaryAriaLabel = "메일로 문의하기",
+  secondaryHref,
+}: Props) {
   return (
     <section
       id="contact"
@@ -28,9 +36,9 @@ export default function ContactCard({ email, primaryHref, secondaryHref }: Props
           <a
             href={primaryHref}
             className="inline-flex items-center px-5 py-2.5 rounded-pill-full bg-ink text-paper text-[14px] font-medium tracking-[-0.005em] hover:bg-body-gray transition-colors duration-200"
-            aria-label="메일로 문의하기"
+            aria-label={primaryAriaLabel}
           >
-            <PhraseLine>메일로 문의하기</PhraseLine>
+            <PhraseLine>{primaryLabel}</PhraseLine>
           </a>
           <a
             href={secondaryHref}

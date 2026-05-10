@@ -27,7 +27,7 @@ export default function PhraseLine({ children, className = "", as = "span" }: Pr
         const limit = parent ? parent.clientWidth : window.innerWidth;
         let scale = 1;
         let guard = 0;
-        while (el.getBoundingClientRect().width > limit + 1 && guard < 6) {
+        while (el.getBoundingClientRect().width > limit + 1 && guard < 10) {
           scale *= 0.92;
           el.style.fontSize = `${scale}em`;
           el.setAttribute("data-overflow", "true");

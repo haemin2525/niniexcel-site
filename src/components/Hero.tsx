@@ -5,7 +5,6 @@ import { site } from "../content/site";
 
 export default function Hero() {
   const { hero, contact, social } = site;
-  const subject = encodeURIComponent(contact.emailSubject);
 
   return (
     <header className="py-32 sm:py-40 lg:py-48">
@@ -17,26 +16,22 @@ export default function Hero() {
 
       <h1 className="mt-8 sm:mt-10 font-display font-bold tracking-[-0.02em] leading-[1.05] text-ink">
         <span className="block anim-fade-up" style={{ animationDelay: "120ms" }}>
-          <PhraseLine className="text-[clamp(40px,7vw,96px)]">
+          <PhraseLine className="text-[clamp(36px,5.5vw,80px)]">
             {hero.headline1}
           </PhraseLine>
         </span>
-        <span className="block anim-fade-up text-body-gray mt-1 sm:mt-2" style={{ animationDelay: "240ms" }}>
-          <PhraseLine className="text-[clamp(36px,6vw,84px)]">
+        <span className="block anim-fade-up mt-1 sm:mt-2" style={{ animationDelay: "240ms" }}>
+          <PhraseLine className="text-[clamp(36px,5.5vw,80px)]">
             {hero.headline2}
           </PhraseLine>
         </span>
       </h1>
 
-      <p className="mt-8 sm:mt-10 text-body-gray anim-fade-up" style={{ animationDelay: "360ms" }}>
-        <PhraseLine className="text-[clamp(16px,1.6vw,20px)] tracking-[-0.005em] leading-[1.4]">
-          {hero.subhead}
-        </PhraseLine>
-      </p>
-
       <ContactCard
         email={contact.email}
-        primaryHref={`mailto:${contact.email}?subject=${subject}`}
+        primaryHref={contact.inquiryRoute}
+        primaryLabel="강의 의뢰하기"
+        primaryAriaLabel="강의 의뢰 페이지로 이동"
         secondaryHref={social.youtube}
       />
     </header>

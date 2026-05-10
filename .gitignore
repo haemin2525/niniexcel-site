@@ -26,3 +26,4 @@ yarn-debug.log*
 
 # OMC orchestrator state (local only)
 .omc/
+.playwright-mcp/
