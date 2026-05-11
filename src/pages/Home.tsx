@@ -8,6 +8,7 @@ import ProcessGrid from "../components/ProcessGrid";
 import TopicsGrid from "../components/TopicsGrid";
 import TalksTimeline from "../components/TalksTimeline";
 import YoutubeSection from "../components/YoutubeSection";
+import ProductsSection from "../components/ProductsSection";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <TopicsGrid />
         <TalksTimeline />
         <YoutubeSection />
+        <ProductsSection />
         <footer className="py-12 mt-32 sm:mt-40 border-t border-ink/10">
           <p className="text-[11px] uppercase tracking-[0.18em] text-muted-gray font-medium">
             <PhraseLine>© 2026 NINIEXCEL · 니니의엑셀</PhraseLine>

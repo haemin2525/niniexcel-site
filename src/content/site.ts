@@ -145,6 +145,28 @@ export const site = {
     { period: "2021", org: "현대자동차", topic: "", category: "기업" },
     { period: "2020", org: "한샘", topic: "", category: "기업" },
   ],
+  products: [
+    {
+      slug: "wedding-planner",
+      channel: "TUMBLBUG · 펀딩",
+      title: "세상에 없던, 꼭 필요한 웨딩 플래너",
+      sub: "결혼 준비, 어디서부터 시작할지 모르는 예비부부를 위해",
+      image: "products/wedding-planner.png",
+      link: "https://tumblbug.com/mondaykeeper_wedding",
+      cta: "텀블벅에서 보기",
+      availableUntil: "2026-05-31",
+    },
+    {
+      slug: "monthly-tracker",
+      channel: "SMARTSTORE · 상시",
+      title: "2026 월간 목표 트래커",
+      sub: "달성률·일정·체크리스트를 한 시트에 — 매달 새로 시작",
+      image: "products/monthly-tracker.png",
+      link: "https://smartstore.naver.com/mondaykeeper",
+      cta: "스마트스토어에서 보기",
+      availableUntil: null,
+    },
+  ],
   inquiry: {
     endpoint: "https://script.google.com/macros/s/AKfycbxwBPyfForzV57VCnDtpLMtiCSpJlajXqskPftLXF2TZAL2hcComf_ZZDofXXSu_BcO/exec",
     title: "강의 의뢰하기",
