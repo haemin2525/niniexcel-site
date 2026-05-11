@@ -1,15 +1,11 @@
 import { site } from "../content/site";
 
-const groupedTalks = (() => {
-  const map = new Map<string, Array<(typeof site.talks)[number]>>();
-  for (const t of site.talks) {
-    const year = t.period.slice(0, 4);
-    const bucket = map.get(year);
-    if (bucket) bucket.push(t);
-    else map.set(year, [t]);
-  }
-  return Array.from(map.entries());
-})();
+const stats = [
+  { num: "6년+", label: "출강 경력" },
+  { num: "5곳+", label: "기업" },
+  { num: "7곳+", label: "공공기관" },
+  { num: "5곳+", label: "플랫폼" },
+] as const;
 
 export default function TalksTimeline() {
   return (
@@ -25,57 +21,49 @@ export default function TalksTimeline() {
         TALKS · 출강 이력
       </p>
       <h2 className="mt-3 text-ink text-[clamp(22px,2.6vw,32px)] font-bold tracking-[-0.01em] leading-[1.25] break-keep">
-        2019년부터 지금까지 — 기업·공공·플랫폼 누적
+        2019년부터 지금까지, 누적된 강의 인연
       </h2>
 
-      <ol className="mt-12 space-y-12 sm:space-y-14">
-        {groupedTalks.map(([year, items], idx) => (
-          <li
-            key={year}
-            className={
-              "grid grid-cols-1 md:grid-cols-[180px_1fr] gap-5 md:gap-12 " +
-              (idx > 0 ? "pt-10 sm:pt-12 border-t border-ink/10" : "")
-            }
-          >
-            <div>
+      <dl className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-[720px]">
+        {stats.map((s) => (
+          <div key={s.label}>
+            <dt className="sr-only">{s.label}</dt>
+            <dd>
               <p className="text-[clamp(32px,4vw,48px)] font-bold text-ink leading-none tracking-[-0.02em]">
-                {year}
+                {s.num}
               </p>
               <p className="mt-2 text-[12px] uppercase tracking-[0.16em] text-muted-gray font-medium">
-                {items.length}건
+                {s.label}
               </p>
-            </div>
+            </dd>
+          </div>
+        ))}
+      </dl>
 
-            <ul className="space-y-6">
-              {items.map((t, i) => {
-                const month = t.period.length > 4 ? t.period.slice(5) : null;
-                return (
-                  <li key={`${year}-${i}`}>
-                    <div className="flex items-center gap-3 flex-wrap">
-                      {month && (
-                        <p className="text-[12px] uppercase tracking-[0.16em] text-muted-gray font-medium">
-                          {month}월
-                        </p>
-                      )}
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-pill-full bg-chip-gray text-ink text-[10px] uppercase tracking-[0.16em] font-medium">
-                        {t.category}
-                      </span>
-                    </div>
-                    <h3 className="mt-1.5 text-[clamp(16px,1.5vw,18px)] font-bold text-ink tracking-[-0.005em] break-keep">
-                      {t.org}
-                    </h3>
-                    {t.topic && (
-                      <p className="mt-1 text-[14px] text-body-gray leading-[1.55] break-keep">
-                        {t.topic}
-                      </p>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+      <ul className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {site.talks.map((t, i) => (
+          <li key={`${t.period}-${t.org}-${i}`}>
+            <article className="h-full bg-paper shadow-card-light rounded-[8px] px-6 py-7 hover:bg-hover-light hover:shadow-card-medium transition-all duration-200">
+              <div className="flex items-center gap-3 flex-wrap">
+                <p className="text-[12px] uppercase tracking-[0.16em] text-muted-gray font-medium">
+                  {t.period}
+                </p>
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-pill-full bg-chip-gray text-ink text-[10px] uppercase tracking-[0.16em] font-medium">
+                  {t.category}
+                </span>
+              </div>
+              <h3 className="mt-3 text-[clamp(16px,1.5vw,18px)] font-bold text-ink tracking-[-0.005em] break-keep">
+                {t.org}
+              </h3>
+              {t.topic && (
+                <p className="mt-2 text-[14px] text-body-gray leading-[1.55] break-keep">
+                  {t.topic}
+                </p>
+              )}
+            </article>
           </li>
         ))}
-      </ol>
+      </ul>
     </section>
   );
 }
