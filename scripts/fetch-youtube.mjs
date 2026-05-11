@@ -1,18 +1,26 @@
 #!/usr/bin/env node
-// niniexcel-site — YouTube TOP 5 by viewCount
-// Runs at build time (CI) and writes src/content/youtube.json.
-// If YOUTUBE_API_KEY is missing or any fetch fails, writes a safe placeholder
-// so the build still succeeds (the section just shows a fallback message).
+// niniexcel-site — YouTube TOP 5 from curated playlists (long-form only)
+// Runs at build time (CI). On failure writes a placeholder so build stays green.
 
 import { writeFileSync } from "node:fs";
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
-const HANDLE = process.env.YOUTUBE_HANDLE || "niniexcel";
+const PLAYLIST_IDS = [
+  "PL7v22YGkvT-Ag3roVp3VZKcSkKwtXDM4G",
+  "PL7v22YGkvT-CPlqgQGTyWralmMyMyTIzW",
+];
+const MIN_DURATION_SECONDS = 61; // 60s 이하 = Shorts → 제외
 const TOP_N = 5;
+const HANDLE = "niniexcel";
 const OUTPUT_PATH = new URL("../src/content/youtube.json", import.meta.url);
 
 const placeholder = JSON.stringify(
-  { channelId: "", handle: `@${HANDLE}`, top: [], updatedAt: null },
+  {
+    handle: `@${HANDLE}`,
+    playlistIds: PLAYLIST_IDS,
+    top: [],
+    updatedAt: null,
+  },
   null,
   2,
 );
@@ -35,42 +43,45 @@ const json = async (res) => {
   return res.json();
 };
 
+// ISO 8601 duration ("PT15M30S", "PT1H10M5S", "PT45S") → seconds
+const parseDuration = (iso) => {
+  const m = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/.exec(iso || "");
+  if (!m) return 0;
+  return Number(m[1] || 0) * 3600 + Number(m[2] || 0) * 60 + Number(m[3] || 0);
+};
+
 try {
-  // 1. Resolve channel by handle → uploads playlist
-  const channels = await fetch(
-    `https://www.googleapis.com/youtube/v3/channels?part=id,contentDetails&forHandle=${HANDLE}&key=${API_KEY}`,
-  ).then(json);
+  // 1. Collect unique video IDs from all playlists
+  const videoIdSet = new Set();
+  for (const playlistId of PLAYLIST_IDS) {
+    let pageToken = "";
+    do {
+      const url = new URL("https://www.googleapis.com/youtube/v3/playlistItems");
+      url.searchParams.set("part", "contentDetails");
+      url.searchParams.set("playlistId", playlistId);
+      url.searchParams.set("maxResults", "50");
+      url.searchParams.set("key", API_KEY);
+      if (pageToken) url.searchParams.set("pageToken", pageToken);
+      const data = await fetch(url).then(json);
+      for (const it of data.items || []) {
+        videoIdSet.add(it.contentDetails.videoId);
+      }
+      pageToken = data.nextPageToken || "";
+    } while (pageToken);
+  }
+  const videoIds = Array.from(videoIdSet);
 
-  const channel = channels.items?.[0];
-  if (!channel) throw new Error(`Channel @${HANDLE} not found`);
-  const channelId = channel.id;
-  const uploadsId = channel.contentDetails.relatedPlaylists.uploads;
-
-  // 2. List all upload video IDs (paginated)
-  const videoIds = [];
-  let pageToken = "";
-  do {
-    const url = new URL("https://www.googleapis.com/youtube/v3/playlistItems");
-    url.searchParams.set("part", "contentDetails");
-    url.searchParams.set("playlistId", uploadsId);
-    url.searchParams.set("maxResults", "50");
-    url.searchParams.set("key", API_KEY);
-    if (pageToken) url.searchParams.set("pageToken", pageToken);
-    const data = await fetch(url).then(json);
-    for (const it of data.items || []) videoIds.push(it.contentDetails.videoId);
-    pageToken = data.nextPageToken || "";
-  } while (pageToken);
-
-  // 3. Fetch snippet + statistics in batches of 50
+  // 2. Fetch snippet + statistics + contentDetails (50 per call)
   const videos = [];
   for (let i = 0; i < videoIds.length; i += 50) {
     const batch = videoIds.slice(i, i + 50).join(",");
     const url = new URL("https://www.googleapis.com/youtube/v3/videos");
-    url.searchParams.set("part", "snippet,statistics");
+    url.searchParams.set("part", "snippet,statistics,contentDetails");
     url.searchParams.set("id", batch);
     url.searchParams.set("key", API_KEY);
     const data = await fetch(url).then(json);
     for (const v of data.items || []) {
+      const durationSeconds = parseDuration(v.contentDetails?.duration);
       videos.push({
         id: v.id,
         title: v.snippet.title,
@@ -82,24 +93,28 @@ try {
           "",
         publishedAt: v.snippet.publishedAt,
         viewCount: Number(v.statistics?.viewCount || 0),
+        durationSeconds,
       });
     }
   }
 
-  // 4. Sort by viewCount desc, slice TOP N
-  videos.sort((a, b) => b.viewCount - a.viewCount);
-  const top = videos.slice(0, TOP_N);
+  // 3. Filter long-form (>= 61s) → sort by viewCount → slice TOP N
+  const longForm = videos.filter((v) => v.durationSeconds >= MIN_DURATION_SECONDS);
+  longForm.sort((a, b) => b.viewCount - a.viewCount);
+  const top = longForm.slice(0, TOP_N).map(({ durationSeconds, ...rest }) => rest);
 
   const payload = {
-    channelId,
     handle: `@${HANDLE}`,
+    playlistIds: PLAYLIST_IDS,
+    minDurationSeconds: MIN_DURATION_SECONDS,
     top,
     updatedAt: new Date().toISOString(),
   };
   writeFileSync(OUTPUT_PATH, JSON.stringify(payload, null, 2) + "\n");
-  console.log(`[fetch-youtube] OK — ${top.length} videos written`);
+  console.log(
+    `[fetch-youtube] OK — ${top.length} long-form videos picked from ${videos.length} (${PLAYLIST_IDS.length} playlists)`,
+  );
 } catch (err) {
   writePlaceholder(`fetch failed: ${err.message}`);
-  // Do not fail the build — site keeps working with fallback message.
   process.exit(0);
 }
