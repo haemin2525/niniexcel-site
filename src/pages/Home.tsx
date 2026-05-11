@@ -1,5 +1,6 @@
 import Background from "../components/Background";
 import Frame from "../components/Frame";
+import TopNav from "../components/TopNav";
 import Hero from "../components/Hero";
 import ClienteleStrip from "../components/ClienteleStrip";
 import PhraseLine from "../components/PhraseLine";
@@ -11,6 +12,7 @@ import YoutubeSection from "../components/YoutubeSection";
 export default function Home() {
   return (
     <>
+      <TopNav />
       <Background />
       <Frame>
         <Hero />
