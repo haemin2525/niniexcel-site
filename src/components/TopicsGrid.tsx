@@ -18,7 +18,7 @@ export default function TopicsGrid() {
       >
         TOPICS · 강의 주제
       </p>
-      <h2 className="mt-3 text-ink text-[clamp(22px,2.6vw,32px)] font-bold tracking-[-0.01em] leading-[1.25] break-keep">
+      <h2 className="mt-3 text-ink text-[clamp(22px,2.6vw,32px)] font-display font-semibold tracking-[-0.018em] leading-[1.25] break-keep">
         엑셀 기본부터 AI 자동화까지, 다섯 가지 클래스
       </h2>
 

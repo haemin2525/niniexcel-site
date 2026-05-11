@@ -20,7 +20,7 @@ export default function TalksTimeline() {
       >
         TALKS · 출강 이력
       </p>
-      <h2 className="mt-3 text-ink text-[clamp(22px,2.6vw,32px)] font-bold tracking-[-0.01em] leading-[1.25] break-keep">
+      <h2 className="mt-3 text-ink text-[clamp(22px,2.6vw,32px)] font-display font-semibold tracking-[-0.018em] leading-[1.25] break-keep">
         2019년부터 지금까지, 누적된 강의 인연
       </h2>
 
@@ -29,7 +29,7 @@ export default function TalksTimeline() {
           <div key={s.label}>
             <dt className="sr-only">{s.label}</dt>
             <dd>
-              <p className="text-[clamp(32px,4vw,48px)] font-bold text-ink leading-none tracking-[-0.02em]">
+              <p className="text-[clamp(32px,4vw,48px)] font-display font-semibold text-ink leading-none tracking-[-0.022em]">
                 {s.num}
               </p>
               <p className="mt-2 text-[12px] uppercase tracking-[0.16em] text-muted-gray font-medium">

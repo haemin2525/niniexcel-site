@@ -25,7 +25,7 @@ export default function YoutubeSection() {
       >
         YOUTUBE · 채널 미리보기
       </p>
-      <h2 className="mt-3 text-paper text-[clamp(22px,2.6vw,32px)] font-bold tracking-[-0.01em] leading-[1.25] break-keep">
+      <h2 className="mt-3 text-paper text-[clamp(22px,2.6vw,32px)] font-display font-semibold tracking-[-0.018em] leading-[1.25] break-keep">
         강의 톤이 궁금하시다면, 가장 많이 본 영상부터
       </h2>
 

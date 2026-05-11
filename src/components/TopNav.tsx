@@ -65,7 +65,7 @@ export default function TopNav() {
 
         <a
           href="#/inquiry"
-          className="inline-flex items-center px-4 sm:px-5 py-2 rounded-pill-full bg-ink text-paper text-[13px] sm:text-[14px] font-medium hover:bg-body-gray transition-colors"
+          className="inline-flex items-center px-4 sm:px-5 py-2 rounded-pill-full bg-primary text-paper text-[13px] sm:text-[14px] font-medium hover:bg-primary-focus transition-colors"
         >
           강의 의뢰하기
         </a>

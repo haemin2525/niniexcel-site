@@ -35,7 +35,7 @@ export default function ContactCard({
         <div className="mt-8 flex flex-wrap gap-3">
           <a
             href={primaryHref}
-            className="inline-flex items-center px-5 py-2.5 rounded-pill-full bg-ink text-paper text-[14px] font-medium tracking-[-0.005em] hover:bg-body-gray transition-colors duration-200"
+            className="inline-flex items-center px-5 py-2.5 rounded-pill-full bg-primary text-paper text-[14px] font-medium tracking-[-0.005em] hover:bg-primary-focus transition-colors duration-200"
             aria-label={primaryAriaLabel}
           >
             <PhraseLine>{primaryLabel}</PhraseLine>

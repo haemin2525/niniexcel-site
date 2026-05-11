@@ -23,10 +23,10 @@ export default function ProductsSection() {
         id="products-heading"
         className="text-[11px] uppercase tracking-[0.18em] text-muted-gray font-medium"
       >
-        PRODUCTS · 디지털 플래너
+        ASIDE · 또 다른 활동
       </p>
-      <h2 className="mt-3 text-ink text-[clamp(22px,2.6vw,32px)] font-bold tracking-[-0.01em] leading-[1.25] break-keep">
-        실무에서 쓰는 도구, 직접 만들어 봅니다
+      <h2 className="mt-3 text-ink text-[clamp(22px,2.6vw,32px)] font-display font-semibold tracking-[-0.018em] leading-[1.25] break-keep">
+        니니의 또 다른 활동
       </h2>
 
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">

@@ -14,7 +14,7 @@ export default function Hero() {
         </Pill>
       </div>
 
-      <h1 className="mt-8 sm:mt-10 font-display font-bold tracking-[-0.02em] leading-[1.05] text-ink">
+      <h1 className="mt-8 sm:mt-10 font-display font-display font-semibold tracking-[-0.022em] leading-[1.05] text-ink">
         <span className="block anim-fade-up" style={{ animationDelay: "120ms" }}>
           <PhraseLine className="text-[clamp(36px,5.5vw,80px)]">
             {hero.headline1}

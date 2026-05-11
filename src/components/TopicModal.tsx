@@ -105,7 +105,7 @@ export default function TopicModal({ topic, onClose }: Props) {
             <a
               href={`#/inquiry?course=${topic.slug}`}
               onClick={onClose}
-              className="inline-flex items-center px-6 py-3 rounded-pill-full bg-ink text-paper text-[15px] font-medium tracking-[-0.005em] hover:bg-body-gray transition-colors duration-200"
+              className="inline-flex items-center px-6 py-3 rounded-pill-full bg-primary text-paper text-[15px] font-medium tracking-[-0.005em] hover:bg-primary-focus transition-colors duration-200"
             >
               이 강의 의뢰하기 →
             </a>

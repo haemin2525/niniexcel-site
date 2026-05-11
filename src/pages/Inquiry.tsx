@@ -70,7 +70,7 @@ export default function Inquiry() {
           </Pill>
         </div>
         <h1
-          className="mt-6 font-display font-bold tracking-[-0.02em] leading-[1.05] text-ink anim-fade-up"
+          className="mt-6 font-display font-display font-semibold tracking-[-0.022em] leading-[1.05] text-ink anim-fade-up"
           style={{ animationDelay: "120ms" }}
         >
           <PhraseLine className="text-[clamp(36px,6vw,72px)]">
@@ -147,7 +147,7 @@ export default function Inquiry() {
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="mt-10 inline-flex items-center px-6 py-3 rounded-pill-full bg-ink text-paper text-[15px] font-medium tracking-[-0.005em] hover:bg-body-gray transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+            className="mt-10 inline-flex items-center px-6 py-3 rounded-pill-full bg-primary text-paper text-[15px] font-medium tracking-[-0.005em] hover:bg-primary-focus transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {status === "submitting" ? "보내는 중…" : "의뢰 보내기"}
           </button>
