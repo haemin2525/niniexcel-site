@@ -7,7 +7,7 @@ export default function ClienteleStrip() {
   return (
     <section
       aria-labelledby="clientele-heading"
-      className="mt-10 sm:mt-14 anim-fade-up"
+      className="anim-fade-up"
     >
       <h2
         id="clientele-heading"
@@ -71,7 +71,7 @@ function Row({ label, items, duration }: RowProps) {
 
   return (
     <div className={`flex items-center gap-6 sm:gap-8 py-2 ${isMarquee ? "marquee-row" : ""}`}>
-      <span className="shrink-0 w-12 sm:w-14 text-[12px] text-ink font-bold tracking-[-0.005em]">
+      <span className="shrink-0 w-12 sm:w-14 text-[12px] text-paper font-bold tracking-[-0.005em]">
         {label}
       </span>
       <div ref={containerRef} className="flex-1 overflow-hidden">
@@ -84,7 +84,7 @@ function Row({ label, items, duration }: RowProps) {
           {renderItems.map((name, i) => (
             <span
               key={`${name}-${i}`}
-              className="text-[15px] sm:text-[16px] text-body-gray font-medium"
+              className="text-[15px] sm:text-[16px] text-body-muted font-medium"
             >
               {name}
             </span>

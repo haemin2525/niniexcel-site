@@ -12,7 +12,7 @@ export default function TalksTimeline() {
     <section
       id="talks"
       aria-labelledby="talks-heading"
-      className="mt-16 sm:mt-20 lg:mt-24 anim-fade-up"
+      className="anim-fade-up"
     >
       <p
         id="talks-heading"

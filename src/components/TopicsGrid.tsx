@@ -10,7 +10,7 @@ export default function TopicsGrid() {
     <section
       id="topics"
       aria-labelledby="topics-heading"
-      className="mt-16 sm:mt-20 lg:mt-24 anim-fade-up"
+      className="anim-fade-up"
     >
       <p
         id="topics-heading"

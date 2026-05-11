@@ -17,7 +17,7 @@ export default function YoutubeSection() {
     <section
       id="youtube"
       aria-labelledby="youtube-heading"
-      className="mt-16 sm:mt-20 lg:mt-24 anim-fade-up"
+      className="anim-fade-up"
     >
       <p
         id="youtube-heading"
@@ -25,18 +25,18 @@ export default function YoutubeSection() {
       >
         YOUTUBE · 채널 미리보기
       </p>
-      <h2 className="mt-3 text-ink text-[clamp(22px,2.6vw,32px)] font-bold tracking-[-0.01em] leading-[1.25] break-keep">
+      <h2 className="mt-3 text-paper text-[clamp(22px,2.6vw,32px)] font-bold tracking-[-0.01em] leading-[1.25] break-keep">
         강의 톤이 궁금하시다면, 가장 많이 본 영상부터
       </h2>
 
       {videos.length === 0 ? (
-        <p className="mt-6 text-[14px] text-body-gray leading-[1.55]">
+        <p className="mt-6 text-[14px] text-body-muted leading-[1.55]">
           영상 데이터를 불러오는 중입니다. 채널은{" "}
           <a
             href={CHANNEL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-ink underline underline-offset-2 hover:text-body-gray"
+            className="text-primary-on-dark underline underline-offset-2 hover:opacity-80"
           >
             youtube.com/@niniexcel
           </a>
@@ -80,7 +80,7 @@ export default function YoutubeSection() {
           href={CHANNEL_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center px-5 py-2.5 rounded-pill-full bg-paper text-ink border border-ink text-[14px] font-medium hover:bg-hover-gray transition-colors duration-200"
+          className="inline-flex items-center px-5 py-2.5 rounded-pill-full bg-paper text-ink text-[14px] font-medium hover:bg-hover-gray transition-colors duration-200"
         >
           유튜브 채널 둘러보기 →
         </a>

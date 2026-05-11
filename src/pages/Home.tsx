@@ -1,5 +1,5 @@
 import Background from "../components/Background";
-import Frame from "../components/Frame";
+import SectionShell from "../components/SectionShell";
 import TopNav from "../components/TopNav";
 import Hero from "../components/Hero";
 import ClienteleStrip from "../components/ClienteleStrip";
@@ -15,20 +15,34 @@ export default function Home() {
     <>
       <TopNav />
       <Background />
-      <Frame>
+      <SectionShell tone="parchment" className="pt-28 sm:pt-32 lg:pt-36">
         <Hero />
+      </SectionShell>
+      <SectionShell tone="dark">
         <ClienteleStrip />
+      </SectionShell>
+      <SectionShell tone="white">
         <ProcessGrid />
+      </SectionShell>
+      <SectionShell tone="parchment">
         <TopicsGrid />
+      </SectionShell>
+      <SectionShell tone="white">
         <TalksTimeline />
+      </SectionShell>
+      <SectionShell tone="dark">
         <YoutubeSection />
+      </SectionShell>
+      <SectionShell tone="parchment">
         <ProductsSection />
-        <footer className="py-12 mt-32 sm:mt-40 border-t border-ink/10">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-muted-gray font-medium">
+      </SectionShell>
+      <footer className="bg-parchment py-12 border-t border-hairline">
+        <div className="max-w-[1136px] mx-auto px-6 sm:px-10 lg:px-16">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-ink-muted-48 font-medium">
             <PhraseLine>© 2026 NINIEXCEL · 니니의엑셀</PhraseLine>
           </p>
-        </footer>
-      </Frame>
+        </div>
+      </footer>
     </>
   );
 }

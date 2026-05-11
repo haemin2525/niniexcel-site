@@ -17,7 +17,7 @@ export default function ProductsSection() {
     <section
       id="products"
       aria-labelledby="products-heading"
-      className="mt-16 sm:mt-20 lg:mt-24 anim-fade-up"
+      className="anim-fade-up"
     >
       <p
         id="products-heading"
