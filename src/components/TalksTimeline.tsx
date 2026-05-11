@@ -1,5 +1,16 @@
 import { site } from "../content/site";
 
+const groupedTalks = (() => {
+  const map = new Map<string, Array<(typeof site.talks)[number]>>();
+  for (const t of site.talks) {
+    const year = t.period.slice(0, 4);
+    const bucket = map.get(year);
+    if (bucket) bucket.push(t);
+    else map.set(year, [t]);
+  }
+  return Array.from(map.entries());
+})();
+
 export default function TalksTimeline() {
   return (
     <section
@@ -17,36 +28,51 @@ export default function TalksTimeline() {
         2019년부터 지금까지 — 기업·공공·플랫폼 누적
       </h2>
 
-      <ol className="relative mt-10 max-w-[720px]">
-        <span
-          aria-hidden="true"
-          className="absolute left-1.5 top-2 bottom-0 w-px bg-ink/15"
-        />
-        {site.talks.map((t, i) => (
+      <ol className="mt-12 space-y-12 sm:space-y-14">
+        {groupedTalks.map(([year, items], idx) => (
           <li
-            key={`${t.period}-${t.org}-${i}`}
-            className="relative pl-8 pb-7 last:pb-0"
+            key={year}
+            className={
+              "grid grid-cols-1 md:grid-cols-[180px_1fr] gap-5 md:gap-12 " +
+              (idx > 0 ? "pt-10 sm:pt-12 border-t border-ink/10" : "")
+            }
           >
-            <span
-              aria-hidden="true"
-              className="absolute left-0 top-[7px] w-3 h-3 rounded-full bg-ink ring-4 ring-paper"
-            />
-            <div className="flex items-center gap-3 flex-wrap">
-              <p className="text-[12px] uppercase tracking-[0.16em] text-muted-gray font-medium">
-                {t.period}
+            <div>
+              <p className="text-[clamp(32px,4vw,48px)] font-bold text-ink leading-none tracking-[-0.02em]">
+                {year}
               </p>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-pill-full bg-chip-gray text-ink text-[10px] uppercase tracking-[0.16em] font-medium">
-                {t.category}
-              </span>
+              <p className="mt-2 text-[12px] uppercase tracking-[0.16em] text-muted-gray font-medium">
+                {items.length}건
+              </p>
             </div>
-            <h3 className="mt-1.5 text-[clamp(15px,1.4vw,17px)] font-bold text-ink tracking-[-0.005em]">
-              {t.org}
-            </h3>
-            {t.topic && (
-              <p className="mt-1 text-[14px] text-body-gray leading-[1.55] break-keep">
-                {t.topic}
-              </p>
-            )}
+
+            <ul className="space-y-6">
+              {items.map((t, i) => {
+                const month = t.period.length > 4 ? t.period.slice(5) : null;
+                return (
+                  <li key={`${year}-${i}`}>
+                    <div className="flex items-center gap-3 flex-wrap">
+                      {month && (
+                        <p className="text-[12px] uppercase tracking-[0.16em] text-muted-gray font-medium">
+                          {month}월
+                        </p>
+                      )}
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-pill-full bg-chip-gray text-ink text-[10px] uppercase tracking-[0.16em] font-medium">
+                        {t.category}
+                      </span>
+                    </div>
+                    <h3 className="mt-1.5 text-[clamp(16px,1.5vw,18px)] font-bold text-ink tracking-[-0.005em] break-keep">
+                      {t.org}
+                    </h3>
+                    {t.topic && (
+                      <p className="mt-1 text-[14px] text-body-gray leading-[1.55] break-keep">
+                        {t.topic}
+                      </p>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
           </li>
         ))}
       </ol>
